@@ -10,19 +10,19 @@
   <header>
     <a href="index.html" id="logo">
       <h1 class='banner-top'>OHO Recordings</h1>
-      <h2>Possibly Sub-header</h2>
-      <img src="img/apple_header.png" alt="Cute apple" class="cuteApple">
+      <h2>Possible Sub-header</h2>
+      <img src="/images/logo.png" alt="Oho logo" class="logo">
     </a>
     <nav>
       <ul>
-        <li><a href="/" class="selected">Home</a></li>
-        <li><%= link_to 'About', '../application/about', method: :get %></li>
+        <li class="navlink"><%= link_to 'Home', root_path, method: :get %></li>
+           <li class="navlink"><%= link_to 'About', '../application/about', method: :get %></li>
         <%if session[:id] %>
-          <li><%= link_to 'Sign Out', "/sessions/#{session[:id]}", method: :delete %></li>
-          <li><%= link_to 'Your Library', "/users/#{session[:id]}", method: :get %></li>
+          <li class="navlink"><%= link_to 'Sign Out', "/sessions/#{session[:id]}", method: :delete %></li>
+          <li class="navlink"><%= link_to 'Your Library', "/users/#{session[:id]}", method: :get %></li>
         <%else%>
-          <li><%= link_to 'Log in/ Sign up', new_user_path, method: :get %></li>
-          <li><%= link_to 'Your Library', new_user_path, method: :get %></li>
+          <li class="navlink"><%= link_to 'Log in/ Sign up', new_user_path, method: :get %></li>
+          <li class="navlink"><%= link_to 'Your Library', new_user_path, method: :get %></li>
         <%end%>
       </ul>
     </nav>

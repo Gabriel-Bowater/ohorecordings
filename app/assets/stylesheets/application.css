@@ -23,6 +23,13 @@ body {
 
 a {
   text-decoration:none;
+  color:black;
+}
+
+.navlink{
+  text-decoration:none;
+  color:black;
+  font-style: bold;
 }
 
 #wrapper {
@@ -191,3 +198,15 @@ a {
       border-bottom:5px solid #86b992;
       margin-bottom: 60px;
     }
+/*******************************
+FRONT PAGE
+*******************************/
+.album-art {
+  width: 20%;
+  display: inline-block;
+  float: left;
+}
+
+.album-link{
+  display: block;
+}
