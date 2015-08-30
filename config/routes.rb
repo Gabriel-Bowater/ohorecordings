@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+
+  root "application#index"
+
+  resources :users
+  resources :sessions
+  resources :albums
+  resources :tracks
+  resources :orders
+
+  get '/application/about' => 'application#about'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

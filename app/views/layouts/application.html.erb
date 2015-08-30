@@ -1,14 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Ohorecordings</title>
+  <title>OHO Recordings</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <header>
+    <a href="index.html" id="logo">
+      <h1 class='banner-top'>OHO Recordings</h1>
+      <h2>Possibly Sub-header</h2>
+      <img src="img/apple_header.png" alt="Cute apple" class="cuteApple">
+    </a>
+    <nav>
+      <ul>
+        <li><a href="/" class="selected">Home</a></li>
+        <li><%= link_to 'About', '../application/about', method: :get %></li>
+        <%if session[:id] %>
+          <li><%= link_to 'Sign Out', "/sessions/#{session[:id]}", method: :delete %></li>
+          <li><%= link_to 'Your Library', "/users/#{session[:id]}", method: :get %></li>
+        <%else%>
+          <li><%= link_to 'Log in/ Sign up', new_user_path, method: :get %></li>
+          <li><%= link_to 'Your Library', new_user_path, method: :get %></li>
+        <%end%>
+      </ul>
+    </nav>
+  </header>
+  <div id="wrapper">
+    <div id="background_div">
+      <section>
+        <%= yield %>
+      </section>
+      <footer>
+        <a href="https://twitter.com/Bb_Gabe"><img src="img/twitter-wrap.png" alt="twitter logo" class="social-icon"></a>
+        <a href="https://www.facebook.com/gd.bowater"><img src="img/facebook-wrap.png" alt="facebook logo logo" class="social-icon"></a>
+        <p>&copy; 2015 David Bowater</p>
+      </footer>
+    </div>
+  </div>
 </body>
 </html>
