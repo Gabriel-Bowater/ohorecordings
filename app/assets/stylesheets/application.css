@@ -44,9 +44,9 @@ a {
 
 }
 
-img {
+/*img {
   max-width:100%;
-}
+}*/
 
 h3 {
   margin: 0 10% 0 10%;
@@ -132,7 +132,12 @@ a {
     width:50%;
     float: left;
   }
-
+  .play-button {
+    float: right;
+    width: 30px;
+    /*position: absolute;*/
+    display: flex;
+  }
   #secondary{
     width: 40%;
     float: right
@@ -172,7 +177,12 @@ a {
       text-align:right;
       width:45%;
     }
-
+  .play-button {
+    float: right;
+    width: 30px;
+    /*position: absolute;*/
+    display: flex;
+  }
   #logo{
       float:left;
       margin-left:5%;
@@ -202,11 +212,44 @@ a {
 FRONT PAGE
 *******************************/
 .album-art {
-  width: 20%;
+  width: 120px;
   display: inline-block;
   float: left;
 }
 
+
 .album-link{
+  display: block;
+  height: 120px;
+  background: orange;
+  border-radius:
+}
+
+.album-price {
+  float: right;
+}
+
+.album-name{
+  vertical-align: middle
+}
+
+/*******************************
+SINGLE ALBUM PAGE
+*******************************/
+
+.album-page-art {
+  width: 30%;
+  display: inline-block;
+  float: left;
+}
+
+.play-button {
+  float: right;
+  width: 30px;
+  /*position: absolute;*/
+  display: flex;
+}
+
+.track-listing {
   display: block;
 }

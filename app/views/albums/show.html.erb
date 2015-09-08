@@ -1,6 +1,13 @@
-  <div class="album-link">
-    <img src=<%=@album.art_url%> class="album-art">
-    <p class="album-info"><%=@album.name%></p>
-    <p class="album-info"><%=@album.price%></p>
-    <p class="album-info"><%=@album.description%></p>
+  <div>
+    <img src=<%=@album.art_url%> class="album-page-art">
+    <p class="album-name"><%=@album.name%></p>
+    <p class="album-price"><%=@album.price%></p>
+    <p class="album-desc"><%=@album.description%></p>
   </div>
+<div>
+  <h2>Track Listing:</h2>
+  <% @tracks.each do |track| %>
+    <p class="track-listing"><%=track.track_number%>: <%=track.name%> ......<a href=<%=track.sample_url%>> <img src="/images/dummyplay.png" class='play-button'></a></p>
+  <%end%>
+
+</div>
