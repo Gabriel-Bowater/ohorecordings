@@ -31,18 +31,18 @@ ActiveRecord::Schema.define(version: 20150830033410) do
   end
 
   create_table "albums", force: :cascade do |t|
-    t.string   "name",        null: false
+    t.string   "name",          null: false
     t.string   "art_url"
     t.string   "artists"
-    t.string   "flac_url"
-    t.string   "mp3_url"
-    t.string   "aac_url"
-    t.string   "ogg_url"
-    t.string   "description"
+    t.string   "flac_arch_url"
+    t.string   "mp3_arch_url"
+    t.string   "aac_arch_url"
+    t.string   "ogg_arch_url"
+    t.text     "description"
     t.decimal  "price"
     t.string   "isrc"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "orders", force: :cascade do |t|
@@ -66,7 +66,8 @@ ActiveRecord::Schema.define(version: 20150830033410) do
 
   create_table "tracks", force: :cascade do |t|
     t.integer  "album_id"
-    t.string   "name",        null: false
+    t.string   "name",         null: false
+    t.integer  "track_number"
     t.string   "flac_url"
     t.string   "mp3_url"
     t.string   "aac_url"
@@ -75,8 +76,8 @@ ActiveRecord::Schema.define(version: 20150830033410) do
     t.string   "description"
     t.decimal  "price"
     t.string   "track_isrc"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "users", force: :cascade do |t|
