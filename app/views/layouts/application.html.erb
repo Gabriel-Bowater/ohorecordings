@@ -2,13 +2,14 @@
 <html>
 <head>
   <title>OHO Recordings</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
   <header>
-    <a href="index.html" id="logo">
+    <a href="/" id="logo">
       <h1 class='banner-top'>OHO</h1>
       <h2>Recordings</h2>
       <img src="/images/logo.png" alt="Oho logo" class="logo">
@@ -17,9 +18,9 @@
       <ul>
         <li class="navlink"><%= link_to 'Home', root_path, method: :get %></li>
            <li class="navlink"><%= link_to 'About', '../application/about', method: :get %></li>
-        <%if session[:id] %>
-          <li class="navlink"><%= link_to 'Sign Out', "/sessions/#{session[:id]}", method: :delete %></li>
-          <li class="navlink"><%= link_to 'Your Library', "/users/#{session[:id]}", method: :get %></li>
+        <%if session[:user_id] %>
+          <li class="navlink"><%= link_to 'Sign Out', session_path(session[:user_id]), method: :delete %></li>
+          <li class="navlink"><%= link_to 'Your Library', user_path(session[:user_id]), method: :get %></li>
         <%else%>
           <li class="navlink"><%= link_to 'Log in/ Sign up', new_user_path, method: :get %></li>
           <li class="navlink"><%= link_to 'Your Library', new_user_path, method: :get %></li>
@@ -29,8 +30,12 @@
   </header>
   <div id="wrapper">
     <div id="background_div">
+    <%if @user%>  
+      <p>Hello, <%=@user.email%></p>
+    <%end%>
       <section>
         <%= yield %>
+        <%= csrf_meta_tags %>
       </section>
       <footer>
         <a href="https://twitter.com/Bb_Gabe"><img src="img/twitter-wrap.png" alt="twitter logo" class="social-icon"></a>

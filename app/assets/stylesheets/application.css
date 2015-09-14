@@ -18,10 +18,16 @@ GENERAL
 ****************************/
 body {
   font-family:'Open Sans', sans-serif;
+  background: #FFFAD5
 }
 
 
 a {
+  text-decoration:none;
+  color:black;
+}
+
+a:hover {
   text-decoration:none;
   color:black;
 }
@@ -40,7 +46,7 @@ a {
 }
 
 #background_div {
-  background-image:url('../img/apple_tex.jpg')
+  background: #DB9E36
 
 }
 
@@ -62,7 +68,7 @@ header {
   margin: 0 0 30px 0;
   padding: 5px 0 0 0;
   width: 100%;
-  background-color: #468966;
+  background-color: #105B63;
 
 }
 
@@ -132,12 +138,7 @@ a {
     width:50%;
     float: left;
   }
-  .play-button {
-    float: right;
-    width: 30px;
-    /*position: absolute;*/
-    display: flex;
-  }
+
   #secondary{
     width: 40%;
     float: right
@@ -177,12 +178,7 @@ a {
       text-align:right;
       width:45%;
     }
-  .play-button {
-    float: right;
-    width: 30px;
-    /*position: absolute;*/
-    display: flex;
-  }
+
   #logo{
       float:left;
       margin-left:5%;
@@ -196,18 +192,19 @@ a {
 
   }
 
-    h1{
-      font-size:2.5em;
-    }
-    h2{
-      font-size:0.825em;
-      margin-bottom:12px;
+  h1{
+    font-size:2.5em;
+  }
+  h2{
+    font-size:0.825em;
+    margin-bottom:12px;
 
-    }
-    header{
-      border-bottom:5px solid #86b992;
-      margin-bottom: 60px;
-    }
+  }
+  header{
+    border-bottom:5px solid #BD4932;#105B63
+    margin-bottom: 60px;
+  }
+}
 /*******************************
 FRONT PAGE
 *******************************/
@@ -215,18 +212,25 @@ FRONT PAGE
   width: 120px;
   display: inline-block;
   float: left;
+  max-height: 100%
 }
 
 
 .album-link{
   display: block;
   height: 120px;
-  background: orange;
-  border-radius:
+  background: #FFD34E;
+  border-radius:4px;
+  margin: 5px;
+  padding: 5px;
+  max-width: 70%;
+  margin-left: 15%;
+  border: double 5px #DB9E36;
 }
 
 .album-price {
   float: right;
+  font-size: 1.2em
 }
 
 .album-name{
@@ -248,8 +252,34 @@ SINGLE ALBUM PAGE
   width: 30px;
   /*position: absolute;*/
   display: flex;
+  margin: 3px;
+  padding: 2px;
 }
 
 .track-listing {
   display: block;
+  margin-top: 20px;
+  margin-left: 10%
+}
+
+.spacer {
+  height: 120px;
+}
+
+/*******************************
+LOGIN SIGNUP PAGE
+*******************************/
+
+.signup-form {
+  background: #FFD34E;
+  border: double 5px #DB9E36;
+  max-width: 80%;
+  margin-left: 10%;
+  padding: 5px;
+}
+
+.signup-field {
+  margin: 10px 0 10px 0;
+  position: relative;
+  float: right;
 }

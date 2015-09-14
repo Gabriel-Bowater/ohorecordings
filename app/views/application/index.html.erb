@@ -1,10 +1,10 @@
-<p>p is for penis</p>
+<h3>Our Catalog</h3>
 <%Album.all.each do |album|%>
-  <a href="/albums/<%=album.id%>">
-    <div class="album-link">
+  <a  class="album-link" href="/albums/<%=album.id%>">
       <img src=<%=album.art_url%> class="album-art">
+    <div >
       <p class="album-name"><%=album.name%></p>
-      <p class="album-price"><%=album.price%></p>
+      <p class="album-price"><%=album.price.round(2)%></p>
     </div>
   </a>
 <%end%>

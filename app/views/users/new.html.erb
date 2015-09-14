@@ -1,3 +1,45 @@
-<p>new.html.erb</p>
+<div class="row">
+    <div class="col-md-6 portfolio-item">
+        <h3>
+            <a href="#">Log In</a>
+        </h3>
+        <p>Existing members, sign in below</p>
+        <form method="post" action="/sessions">
+          <label>Email</label><br>
+          <input type='email' name="email"><br>
+          <label>Password</label><br>
+          <input type='password' name="password"><br><%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+          <input type='submit' class='btn-md btn-warning'>
 
-<%= link_to 'sign in, big boi', sessions_path, method: :post %>
+
+        </form>
+    </div>
+    <div class="col-md-6 portfolio-item">
+        <h3>
+            <a href="#">Sign Up</a>
+        </h3>
+        <p>Enter details to become a member</p>
+        <form method="post" action="/users">
+          <label>Email</label><br>
+          <input type='email' name="email"><br>       <label>Given Name</label><br>
+          <input type='textfield' name="given_name"><br>
+          <label>Family Name</label><br>
+          <input type='textfield' name="family_name"><br>
+          <label>Address - Line 1</label><br>
+          <input type='textfield' name="address_one"><br>
+          <label>Address - Line 2</label><br>
+          <input type='textfield' name="address_two"><br>
+          <label>Address - City</label><br>
+          <input type='textfield' name="address_city"><br>
+          <label>Address - Country</label><br>
+          <input type='textfield' name="address_country"><br>
+          <label>Password</label><br>
+          <input type='password' name="password"><br>
+          <label>Confirm Password</label><br>
+          <input type='password' name="confirm_password"><br><%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+          <input type='submit' class='btn-md btn-warning'>
+
+
+        </form>
+    </div>
+</div>
