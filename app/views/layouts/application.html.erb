@@ -33,6 +33,23 @@
     <%end%>
   </header>
   <div id="wrapper">
+
+    <% if flash.alert %>
+      <div class="messages">
+        <div class="alert alert-danger" role="alert">
+          <%= flash.alert %>
+        </div>
+      </div>
+    <% end %>
+
+    <% if flash.notice %>
+      <div class="messages">
+        <div class="alert alert-success" role="alert">
+          <%= flash.notice %>
+        </div>
+      </div>
+    <% end %>
+
     <div id="background_div">
     <%if @user%>  
       <p>Hello, <%=@user.email%></p>

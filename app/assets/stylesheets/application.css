@@ -18,7 +18,7 @@ GENERAL
 ****************************/
 body {
   font-family:'Open Sans', sans-serif;
-  background: #FF111A
+  background:  #FF111A
 }
 
 body {
@@ -77,6 +77,10 @@ header {
   padding: 5px 0 0 0;
   width: 100%;
   background-color: #CCCCAA;
+  background-image: url("/images/record_header.png");
+  background-repeat: no-repeat;
+  background-position: 25% 50%;
+  background-size: 95%;
 
 }
 
@@ -217,7 +221,7 @@ a {
     margin-bottom:12px;
   }
   header{
-    border-bottom:5px solid #57A8E0;#105B63
+    border-bottom:5px solid #FF111A ;#57A8E0 #105B63
     margin-bottom: 60px;
   }
 }
@@ -231,11 +235,14 @@ FRONT PAGE
   max-height: 100%
 }
 
+#catalog-head{
+  color: #CCCCAA;
+}
 
 .album-link{
   display: block;
   height: 120px;
-  background: rgba(20,121,178,0.85);
+  background: rgba(204,204,170,0.85);
   border-radius:4px;
   margin: 5px;
   padding: 5px;

@@ -12,17 +12,12 @@ class SessionsController < ApplicationController
 	      # response = session[:user_id]
 	    else
 	      # redirect_to '/'
-	      response = "Bad Password. Bad!"
+	      flash.alert = "Incorrect Password"
 	    end
 	  else
-	  	response = "User not found"
+	  	flash.alert = "User not found"
   	end
-  	if response
-			render text: response
-		else
-			redirect_to '/'
-		end
-
+	redirect_to '/'
   end
 
   def destroy

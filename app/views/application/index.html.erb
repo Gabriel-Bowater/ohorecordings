@@ -1,6 +1,6 @@
-<h3>Our Catalog</h3>
+<h3 id="catalog-head">Our Catalog</h3>
 <%Album.all.order(:created_at).each do |album|%>
-  <a  class="album-link" href="/albums/<%=album.id%>">
+  <a class="album-link" href="/albums/<%=album.id%>">
       <img src=<%=album.art_url%> class="album-art">
     <div >
       <p class="album-name"><%=album.name%></p>

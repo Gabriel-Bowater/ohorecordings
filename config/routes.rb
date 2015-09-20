@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   resources :tracks
   resources :orders
 
-  get '/application/about' => 'application#about'
+  get '/orders/:id', to: 'orders#new'
+
+  # get '/application/about' => 'application#about'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
