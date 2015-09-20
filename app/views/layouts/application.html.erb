@@ -3,6 +3,7 @@
 <head>
   <title>OHO Recordings</title>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css" rel="stylesheet">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -10,9 +11,9 @@
 <body>
   <header>
     <a href="/" id="logo">
-      <h1 class='banner-top'>OHO</h1>
-      <h2>Recordings</h2>
-      <img src="/images/logo.png" alt="Oho logo" class="logo">
+      <img src="/images/logo_big_h.png" alt="Oho logo">
+      <!-- <h1 class='banner-top'>OHO</h1> -->
+      <h2 id="logo-subheader">Recordings</h2>
     </a>
     <nav>
       <ul>
@@ -27,6 +28,9 @@
         <%end%>
       </ul>
     </nav>
+    <%if @user%>
+      <a href="/users/<%=@user.id%>/orders"><img src="/images/cart.png" class="small-cart"></a>
+    <%end%>
   </header>
   <div id="wrapper">
     <div id="background_div">

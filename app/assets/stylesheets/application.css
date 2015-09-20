@@ -18,9 +18,13 @@ GENERAL
 ****************************/
 body {
   font-family:'Open Sans', sans-serif;
-  background: #FFFAD5
+  background: #FF111A
 }
 
+body {
+  color: #000;
+  font-size: 1.7em
+}
 
 a {
   text-decoration:none;
@@ -46,8 +50,12 @@ a:hover {
 }
 
 #background_div {
-  background: #DB9E36
-
+  background: #9E9E84;
+  background-image: url("/images/recordstack.png");
+  background-repeat: repeat-y;
+  background-size: 100%;
+  border-left: double 3px black;
+  border-right: double 3px black;
 }
 
 /*img {
@@ -68,7 +76,7 @@ header {
   margin: 0 0 30px 0;
   padding: 5px 0 0 0;
   width: 100%;
-  background-color: #105B63;
+  background-color: #CCCCAA;
 
 }
 
@@ -79,10 +87,9 @@ header {
 
 #logo img {
 /*  max-height: 10%;*/
-  max-width: 20%;
-  margin: 4% 45% 0;
-  transition: .5s ease-in-out;
-
+  width: 30%;
+  margin: 4% 5% 0 35%;
+  float: left;
 
 }
 
@@ -174,22 +181,32 @@ a {
       background:none;
       float: right;
       font-size:1.125em;
-      margin-right:5%;
+      padding-right:5%;
       text-align:right;
-      width:45%;
+      width:38%;
+      clear: left;
+      margin-top: -70px;
     }
 
   #logo{
       float:left;
-      margin-left:5%;
       text-align:left;
-      width:45%;
+      width:60%;
     }
   #logo img{
-    float:left;
-    max-width: 15%;
-    margin: -5px 8% 0;
+    float:right;
+    max-width: 30%;
+    margin: -5px 8% 0 35%;
+    max-height: 100%;
 
+  }
+
+  #logo-subheader{
+    float:right;
+    max-width: 30%;
+    margin: -5px 13.5% 0 35%;
+    max-height: 100%;
+    font-size: 1.6em;
   }
 
   h1{
@@ -198,10 +215,9 @@ a {
   h2{
     font-size:0.825em;
     margin-bottom:12px;
-
   }
   header{
-    border-bottom:5px solid #BD4932;#105B63
+    border-bottom:5px solid #57A8E0;#105B63
     margin-bottom: 60px;
   }
 }
@@ -209,7 +225,7 @@ a {
 FRONT PAGE
 *******************************/
 .album-art {
-  width: 120px;
+  /*width: 120px;*/
   display: inline-block;
   float: left;
   max-height: 100%
@@ -219,13 +235,13 @@ FRONT PAGE
 .album-link{
   display: block;
   height: 120px;
-  background: #FFD34E;
+  background: rgba(20,121,178,0.85);
   border-radius:4px;
   margin: 5px;
   padding: 5px;
   max-width: 70%;
   margin-left: 15%;
-  border: double 5px #DB9E36;
+  border: double 5px #092B42;
 }
 
 .album-price {
@@ -241,6 +257,11 @@ FRONT PAGE
 SINGLE ALBUM PAGE
 *******************************/
 
+#album-show-main{
+  background: rgba(20,121,178,0.85);
+  border: double 5px #092B42;
+}
+
 .album-page-art {
   width: 30%;
   display: inline-block;
@@ -254,6 +275,23 @@ SINGLE ALBUM PAGE
   display: flex;
   margin: 3px;
   padding: 2px;
+}
+
+.big-cart{
+  float: right;
+  width: 10%;
+  margin-right: 2%
+
+}
+
+.small-cart {
+  float: right;
+  width: 30px;
+  /*position: absolute;*/
+  display: flex;
+  margin: 3px;
+  padding: 2px;
+  margin-right: .5%
 }
 
 .track-listing {
@@ -282,4 +320,19 @@ LOGIN SIGNUP PAGE
   margin: 10px 0 10px 0;
   position: relative;
   float: right;
+}
+
+.log-in-form{
+  background: rgba(20,121,178,0.85);
+  border: double 5px #092B42;
+  border-radius: 5px;
+  margin-left: 2.5%;
+  max-width: 45%
+}
+/********************************
+USER LIBRARY PAGE
+********************************/
+
+.library-div{
+  padding: 20px
 }

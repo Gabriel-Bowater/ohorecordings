@@ -1,1 +1,24 @@
-<p>user library. User = <%=@user.email%></p>
+<div class="library-div">
+<h3>Your library</h3>
+<p>User = <%=@user.email%></p>
+
+<h2><u>Your Albums</u><h2>
+<%if @user_albums.length > 0%>
+	<%@user_albums.each do |album|%>
+		<h2><%=album.name%></h2>
+		<p><a href="">Generate Download Link</a></p>
+	<%end%>
+<%else%>
+	<p>No albums yet. Take a look at our <a href="/">catalog</a>.</p>
+<%end%>
+
+<h2><u>Your Tracks</u><h2>
+<%if @user_tracks.length > 0%>
+	<%@user_tracks.each do |track|%>
+		<h2><%=track.name%></h2>
+		<p><a href="">Generate Download Link</a></p>
+	<%end%>
+<%else%>
+	<p>No individual tracks in your library yet.</p>
+<%end%>
+</div>

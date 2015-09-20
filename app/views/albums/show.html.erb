@@ -1,16 +1,20 @@
-  <div>
-    <img src=<%=@album.art_url%> class="album-page-art">
-    <h1 class="album-name"><%=@album.name%></h1>
-    <div class="spacer"></div>
-    <p class="album-price"><%=@album.price.round(2)%></p>
-    <p class="album-desc"><%=@album.description%></p>
-    <p class="album-desc">By <%=@album.artists%></p>
+<br>
+<div id="album-show-main">
+<div>
+  <img src=<%=@album.art_url%> class="album-page-art">
+  <h1 class="album-name"><%=@album.name%></h1>
+  <img src="/images/cart.png" class="big-cart">
+  <div class="spacer"></div>
+  <p class="album-price"><%=@album.price.round(2)%></p>
+  <p class="album-desc"><%=@album.description%></p>
+  <p class="album-desc">By <%=@album.artists%></p>
 
-  </div>
+</div>
 <div>
   <h2>Track Listing:</h2>
   <% @tracks.each do |track| %>
-    <p class="track-listing"><%=track.track_number%>: <%=track.name%> ......<img class='play-button' src="/images/cart.png">    <a href=<%=track.sample_url%> target="_blank"> <img src="/images/dummyplay.png" class='play-button'></a>      </p>
+    <p class="track-listing"><%=track.track_number%>: <%=track.name%> ......<img class='small-cart' src="/images/cart.png">    <a href=<%=track.sample_url%> target="_blank"> <img src="/images/dummyplay.png" class='play-button'></a>      </p>
   <%end%>
 
+</div>
 </div>
