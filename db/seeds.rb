@@ -41,10 +41,10 @@ require 'faker'
 	8.times do |i|
 		track_name = Faker::Company.name
 		track_number = i+1
-
 		Track.create(album_id: current_album.id,
 					name: track_name,
-					track_number: track_number)
+					track_number: track_number,
+					price: 2.00)
 	end
 
 

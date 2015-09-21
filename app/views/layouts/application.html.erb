@@ -28,8 +28,13 @@
         <%end%>
       </ul>
     </nav>
-    <%if @user%>
-      <a href="/users/<%=@user.id%>/orders"><img src="/images/cart.png" class="small-cart"></a>
+    <%if session[:user_id]%>
+      <%if Order.where(user_id: session[:user_id], completed: false)[0]%> 
+        <p id="cart-count"><%=AlbumOrder.where(order_id: Order.where(user_id: session[:user_id], completed: false)[0].id).length + TrackOrder.where(order_id: Order.where(user_id: session[:user_id], completed: false)[0].id).length + 0 %></p>
+        <%else%>
+          <p id="cart-count">0</p>
+        <%end%>
+      <a href="/users/<%=session[:user_id]%>/orders"><img src="/images/cart.png" class="small-cart"></a>
     <%end%>
   </header>
   <div id="wrapper">

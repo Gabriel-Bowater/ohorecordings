@@ -1,0 +1,29 @@
+
+<div id="album-show-main" class="orders-div">
+	<h3 class="catalog-head">Albums in cart -</h3>
+	<% if @user_album_orders%>
+		<% @user_album_orders.each do |album| %>
+			<p><%= album.album.name + "......" + album.album.price.to_s %></p>
+		<% end %>
+	<%end%>
+	<br>
+
+
+	<h3 class="catalog-head">Tracks in cart -</h3>
+	<% if @user_track_orders%>
+		<% @user_track_orders.each do |track| %>
+			<p><%= track.track.name + "......" + track.track.price.to_s %></p>
+		<% end %>
+	<% end %>
+
+	<h3 class="catalog-head">Total: <%= @order_total.to_s%></h3>
+
+	<% if @order_total != 0 %>
+		<h3 class="catalog-head"> Checkout with Paypal </h3>
+
+
+		<%= link_to image_tag("/images/paypal.png", :border=>0, :class => 'paypal'), "/orders/#{@order.id}" ,method: :put%>
+
+	<%end%>
+	<a href="/"><h3 class="catalog-head"> Continue Shopping </h3></a>
+</div>

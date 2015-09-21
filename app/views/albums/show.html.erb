@@ -4,30 +4,45 @@
   <img src=<%=@album.art_url%> class="album-page-art">
   <h1 class="album-name"><%=@album.name%></h1>
   <!-- <a href="/orders/<%=@album.id%>" name=<%=@album.id%>><img src="/images/cart.png" class="big-cart"></a> -->
-  <form  name='orderAlbum' method='post' action='/orders'>
-    <div>
-        <input type='hidden' name='album_id' value=<%=@album.id%>>
-        <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-        <input type="image" name="order" src="/images/cart.png" border="0" alt="Submit" class="big-cart"/>
-    </div>
-  </form> 
+  <% if session[:user_id] && @album.in_cart(session[:user_id]) %>
+    <img src="/images/incart.png" class="big-cart">
+  <% elsif session[:user_id] && @album.in_library(session[:user_id]) %>    
+    <img src="/images/inlibrary.png" class="big-cart">
+  <%else%>
+    <form  name='orderAlbum' method='post' action='/orders'>
+      <div>
+          <input type='hidden' name='album_id' value=<%=@album.id%>>
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+          <input type="image" name="order" src="/images/cart.png" border="0" alt="Submit" class="big-cart"/>
+      </div>
+    </form>
+  <%end%>
   <div class="spacer"></div>
   <p class="album-price"><%=@album.price.round(2)%></p>
   <p class="album-desc"><%=@album.description%></p>
   <p class="album-desc">By <%=@album.artists%></p>
 
 </div>
-<div>
-  <h2>Track Listing:</h2>
-  <% @tracks.each do |track| %>
-    <p class="track-listing"><%=track.track_number%>: <%=track.name%> ...... 
-    <form  name='orderTrack' method='post' action='/orders'>
-      <input type='hidden' name='track_id' value=<%=track.id%>>
-      <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-      <input type="image" name="track" src="/images/cart.png" border="0" alt="Submit" class="small-cart"/>
-    </form>
-    <a href=<%=track.sample_url%> target="_blank"> <img src="/images/dummyplay.png" class='play-button'></a> </p>
-  <%end%>
+  <div>
+    <h2>Track Listing:</h2>
+    <% @tracks.each do |track| %>
+      <section class="single-track">
+        <p class="track-listing"><%=track.track_number%>: <%=track.name%> <%="."*(30-track.name.length)%> 
+        
+        <% if session[:user_id] && track.in_cart(session[:user_id]) %>
+          <img src="/images/incart.png" class="small-cart">
+        <% elsif session[:user_id] && track.in_library(session[:user_id]) %>    
+          <img src="/images/inlibrary.png" class="small-cart">
+        <%else%>
+          <form  class='track-order-button' name='orderTrack' method='post' action='/orders'>
+            <input type='hidden' name='track_id' value=<%=track.id%>>
+            <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+            <input type="image" name="track" src="/images/cart.png" border="0" alt="Submit" class="small-cart"/>
+          </form>
+        <%end%>
+        <a href=<%=track.sample_url%> target="_blank"> <img src="/images/dummyplay.png" class='play-button'></a> </p>
+      </section>
+    <%end%>
 
-</div>
+  </div>
 </div>
