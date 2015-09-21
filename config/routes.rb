@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :albums
   resources :tracks
   resources :orders
+  resources :album_orders
+  resources :track_orders
 
   get '/orders/:id', to: 'orders#new'
 

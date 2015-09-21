@@ -304,6 +304,15 @@ SINGLE ALBUM PAGE
   padding: 2px;
   margin-right: .5%
 }
+.trashcan {
+  float: right;
+  height: 30px;
+  /*position: absolute;*/
+  display: inline-block;
+  margin: -20px 1% 0 0;
+  padding: 2px;
+  /*margin-right: .5%*/
+}
 
 
 .track-order-button {

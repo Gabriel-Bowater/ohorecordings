@@ -30,7 +30,8 @@
     </nav>
     <%if session[:user_id]%>
       <%if Order.where(user_id: session[:user_id], completed: false)[0]%> 
-        <p id="cart-count"><%=AlbumOrder.where(order_id: Order.where(user_id: session[:user_id], completed: false)[0].id).length + TrackOrder.where(order_id: Order.where(user_id: session[:user_id], completed: false)[0].id).length + 0 %></p>
+        <p id="cart-count"><%=AlbumOrder.where(order_id: Order.where(user_id: session[:user_id], completed: false)[0].id).length + TrackOrder.where(order_id: Order.where(user_id: session[:user_id], completed: false)[0].id).length + 0 %></p> 
+        <!-- TODO - FIX THIS MESS. MOVE IT TO A METHOD IN THE USER CONTROLLER? -->
         <%else%>
           <p id="cart-count">0</p>
         <%end%>
