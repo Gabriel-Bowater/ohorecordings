@@ -19,18 +19,18 @@
       <ul>
         <li class="navlink"><%= link_to 'Home', root_path, method: :get %></li>
            <li class="navlink"><%= link_to 'About', '../application/about', method: :get %></li>
-        <%if session[:user_id] %>
-          <li class="navlink"><%= link_to 'Sign Out', session_path(session[:user_id]), method: :delete %></li>
-          <li class="navlink"><%= link_to 'Your Library', user_path(session[:user_id]), method: :get %></li>
+        <%if @user %>
+          <li class="navlink"><%= link_to 'Sign Out', session_path(@user.id), method: :delete %></li>
+          <li class="navlink"><%= link_to 'Your Library', user_path(@user.id), method: :get %></li>
         <%else%>
           <li class="navlink"><%= link_to 'Log in/ Sign up', new_user_path, method: :get %></li>
           <li class="navlink"><%= link_to 'Your Library', new_user_path, method: :get %></li>
         <%end%>
       </ul>
     </nav>
-    <%if session[:user_id]%>
+    <%if @user%>
       <p id="cart-count"><%=@user_cart_count%></p>
-      <a href="/users/<%=session[:user_id]%>/orders"><img src="/images/cart.png" class="small-cart"></a>
+      <a href="/users/<%=@user.id%>/orders"><img src="/images/cart.png" class="small-cart"></a>
     <%end%>
   </header>
   <div id="wrapper">

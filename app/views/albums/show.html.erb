@@ -4,10 +4,10 @@
   <img src=<%=@album.art_url%> class="album-page-art">
   <h1 class="album-name"><%=@album.name%></h1>
   <!-- <a href="/orders/<%=@album.id%>" name=<%=@album.id%>><img src="/images/cart.png" class="big-cart"></a> -->
-  <% if session[:user_id] && @album.in_cart(session[:user_id]) %>
-    <img src="/images/incart.png" class="big-cart">
-  <% elsif session[:user_id] && @album.in_library(session[:user_id]) %>    
-    <img src="/images/inlibrary.png" class="big-cart">
+  <% if @user && @album.in_cart(@user.id) %>
+    <a href=<%=orders_path%>><img src="/images/incart.png" class="big-cart"></a>
+  <% elsif @user && @album.in_library(@user.id) %>    
+    <a href=<%=user_path%>><img src="/images/inlibrary.png" class="big-cart"></a>
   <%else%>
     <form  name='orderAlbum' method='post' action='/orders'>
       <div>
@@ -27,12 +27,16 @@
     <h2>Track Listing:</h2>
     <% @tracks.each do |track| %>
       <section class="single-track">
-        <p class="track-listing"><%=track.track_number%>: <%=track.name%> <%="."*(30-track.name.length)%> 
-        
-        <% if session[:user_id] && track.in_cart(session[:user_id]) %>
+      <p class="track-listing">
+        <%if track.name.length < 30 %>
+          <%=track.track_number%>: <%=track.name%> <%="."*(30-track.name.length)%> 
+        <% else %>
+          <%=track.track_number%>: <%=track.name%>
+        <% end %>
+        <% if @user && track.in_cart(@user.id) %>
           <img src="/images/incart.png" class="small-cart">
-        <% elsif session[:user_id] && track.in_library(session[:user_id]) %>    
-          <img src="/images/inlibrary.png" class="small-cart">
+        <% elsif @user && track.in_library(@user.id) %>    
+          <a href=<%=user_path%>><img src="/images/inlibrary.png" class="small-cart"></a>
         <%else%>
           <form  class='track-order-button' name='orderTrack' method='post' action='/orders'>
             <input type='hidden' name='track_id' value=<%=track.id%>>
@@ -42,10 +46,12 @@
         <%end%>
 
         <%if track.sample_url%>
-          <a href=<%=track.sample_url%> target="_blank"> <img src="/images/dummyplay.png" class='play-button'></a> </p>
+          <a href=<%=track.sample_url%> target="_blank"> <img src="/images/dummyplay.png" class='play-button'></a> 
+
         <%else%>
           <input type="image" src="/images/dummyplay.png" onclick="noSample()" class='play-button'>
         <%end%>
+      </p>
       </section>
     <%end%>
 

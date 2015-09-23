@@ -29,9 +29,11 @@ class BuildTables < ActiveRecord::Migration
       t.string :mp3_arch_url
       t.string :aac_arch_url
       t.string :ogg_arch_url
+      t.string :other_arch_url
       t.text :description
       t.decimal :price
       t.string :isrc
+      t.string :year
 
       t.timestamps null: false
     end
