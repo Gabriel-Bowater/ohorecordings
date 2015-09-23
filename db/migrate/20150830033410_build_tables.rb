@@ -13,6 +13,7 @@ class BuildTables < ActiveRecord::Migration
       t.string :address_city
       t.string :address_country
       t.string :password_hash
+      t.boolean :email_confirmed, null: false, default: true
 
       t.timestamps null: false
     end
@@ -31,7 +32,7 @@ class BuildTables < ActiveRecord::Migration
       t.string :ogg_arch_url
       t.string :other_arch_url
       t.text :description
-      t.decimal :price
+      t.decimal :price, default: 10.00, null: false
       t.string :isrc
       t.string :year
 
@@ -52,7 +53,7 @@ class BuildTables < ActiveRecord::Migration
       t.string :ogg_url
       t.string :sample_url
       t.string :description
-      t.decimal :price
+      t.decimal :price, default: 2.00, null: false
       t.string :track_isrc
 
       t.timestamps null: false

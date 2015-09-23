@@ -18,6 +18,7 @@ class AlbumsController < ApplicationController
 													mp3_arch_url: params[:mp3_arch_url],
 													aac_arch_url: params[:aac_arch_url],
 													ogg_arch_url: params[:ogg_arch_url],
+													alac_arch_url: params[:alac_arch_url],
 													price: params[:price],
 													isrc: params[:isrc])
 		if new_album.save!

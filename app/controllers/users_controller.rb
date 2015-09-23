@@ -28,13 +28,5 @@ class UsersController < ApplicationController
     redirect_to '/'
   end
 
-  # def login #needs to be moved to sessions controller
-  #   @user = User.find_by_email(params[:email])
-  #   if @user.password == params[:password]
-  #     give_token
-  #   else
-  #     redirect_to '/'
-  #   end
-  # end
 
 end

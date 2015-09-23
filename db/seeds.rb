@@ -27,7 +27,10 @@ require 'faker'
 				password_hash: password)
 
 	name = Faker::Company.name
-	art_url = Faker::Avatar.image
+	art_url = ["https://upload.wikimedia.org/wikipedia/en/4/46/Run_Kid_Run_-_Love_At_The_Core_(Album_Art).jpg",
+				"http://www.smashingmagazine.com/images/music-cd-covers/43.jpg",
+				"http://illusion.scene360.com/wp-content/uploads/2013/10/album-covers-05.jpg",
+				"http://www.smashingmagazine.com/images/100-obscure-remarkable-cd-covers/greenday.jpg"].sample
 	artist = Faker::Name.name
 	description = Faker::Lorem.paragraph
 	price = Faker::Commerce.price.to_f
