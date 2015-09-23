@@ -40,9 +40,19 @@
             <input type="image" name="track" src="/images/cart.png" border="0" alt="Submit" class="small-cart"/>
           </form>
         <%end%>
-        <a href=<%=track.sample_url%> target="_blank"> <img src="/images/dummyplay.png" class='play-button'></a> </p>
+
+        <%if track.sample_url%>
+          <a href=<%=track.sample_url%> target="_blank"> <img src="/images/dummyplay.png" class='play-button'></a> </p>
+        <%else%>
+          <input type="image" src="/images/dummyplay.png" onclick="noSample()" class='play-button'>
+        <%end%>
       </section>
     <%end%>
 
   </div>
 </div>
+<script>
+function noSample(){
+  alert("No sample available, sorry.");
+}
+</script>
