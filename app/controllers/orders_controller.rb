@@ -41,7 +41,18 @@ class OrdersController < ApplicationController
 	end
 
 	def update
-		render text: params
+		paid = true
+		order = Order.find(params[:id])
+		if paid
+			AlbumOrder.where(order_id: order.id).each do |album|
+				AlbumRight.create(user_id: order.user_id, album_id: album.album_id)
+			end
+			TrackOrder.where(order_id: order.id).each do |track|
+				TrackRight.create(user_id: order.user_id, track_id: track.track_id)
+			end
+		end
+		order.update(completed: true)
+		redirect_to user_path
 	end
 
 end

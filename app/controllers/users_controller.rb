@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       @user_albums << Album.find(right.album_id)
     end
     TrackRight.where(user_id: @user.id).each do |right|
-      @user_tacks << Track.find(right.track_id)
+      @user_tracks << Track.find(right.track_id)
     end
   end
 
