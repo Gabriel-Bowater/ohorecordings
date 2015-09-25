@@ -1,0 +1,41 @@
+<div class="col-lg-6 portfolio-item log-in-form">
+	<%if @user && @admins.include?(@user.email)%>
+	  <h3>
+	      <a href="#">Add a Track</a>
+	  </h3>
+	  <p>Enter details to enter an album in the database</p>
+	  <form method="post" action="/tracks">
+	    <label>Album</label><br>
+	    <select name="album_id">
+	    <%@albums.each do |album|%>
+	    	<option value="<%=album.id%>"><%=album.name%></option>  
+	    <%end%>     
+	    </select>
+	    <label>Track Name</label><br>
+	    <input type='textfield' name="name" ><br>
+	    <label>Track Number</label> 
+	    <p>Leave this blank and the track will automatically be asigned the number of how many tracks already added to the album plus 1</p>
+	    <input type='number' step="1" name="track_number" ><br>
+	    <label>FLAC URL</label><br>
+	    <input type='textfield' name="flac_url"><br>
+	    <label>MP3 URL</label><br>
+	    <input type='textfield' name="mp3_url"><br>
+	    <label>AAC URL</label><br>
+	    <input type='textfield' name="AAC_url"><br>
+	    <label>OGG URL</label><br>
+	    <input type='textfield' name="ogg_url"><br>
+	    <label>ALAC URL</label><br>
+	    <input type='textfield' name="alac_url"><br>
+	   	<label>Sample URL</label><br>
+	    <input type='textfield' name="sample_url"><br>
+	    <label>Price</label><br>
+	    <input type='number' step="0.01" name="price" placeholder="2.00" required><br>
+	    <label>ISRC Code</label><br>
+	    <input type='textfield' name="track_isrc"><br>
+	    <%= hidden_field_tag :authenticity_token, form_authenticity_token -%> <br>
+	    <input type='submit' class='btn-md btn-warning'>
+	  </form>
+	<%else%>
+		<p>Beep Boop. Access Denied</p>
+	<%end%>
+</div>

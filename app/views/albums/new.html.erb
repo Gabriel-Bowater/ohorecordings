@@ -1,9 +1,9 @@
 <div class="col-lg-6 portfolio-item log-in-form">
 	<%if @user && @admins.include?(@user.email)%>
 	  <h3>
-	      <a href="#">Sign Up</a>
+	      <a href="#">Add and Album</a>
 	  </h3>
-	  <p>Enter details to become a member</p>
+	  <p>Enter details to enter an album in the database</p>
 	  <form method="post" action="/albums">
 
 	    <label>Album name</label><br>
@@ -34,7 +34,9 @@
 	    <input type='submit' class='btn-md btn-warning'>
 
 	  </form>
+	<a href=<%=new_track_path%>><h3>Add Tracks</h3></a>
 	<%else%>
 		<p>Beep Boop. Access Denied</p>
 	<%end%>
+
 </div>

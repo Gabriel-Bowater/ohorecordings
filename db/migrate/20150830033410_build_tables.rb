@@ -30,7 +30,7 @@ class BuildTables < ActiveRecord::Migration
       t.string :mp3_arch_url
       t.string :aac_arch_url
       t.string :ogg_arch_url
-      t.string :other_arch_url
+      t.string :alac_arch_url
       t.text :description
       t.decimal :price, default: 10.00, null: false
       t.string :isrc
@@ -52,7 +52,6 @@ class BuildTables < ActiveRecord::Migration
       t.string :aac_url
       t.string :ogg_url
       t.string :sample_url
-      t.string :description
       t.decimal :price, default: 2.00, null: false
       t.string :track_isrc
 
