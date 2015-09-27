@@ -404,7 +404,13 @@ USER LIBRARY PAGE
 ********************************/
 
 .library-div {
-  padding: 20px
+  background: rgba(204,204,170,0.85);
+  border: double 5px #092B42;
+  border-radius: 5px;
+  margin-left: 10%;
+  width: 80%;
+  box-shadow: 10px 10px 5px #888888;
+  padding-bottom: 40px
 }
 
 /********************************
