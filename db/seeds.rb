@@ -34,20 +34,29 @@ require 'faker'
 	artist = Faker::Name.name
 	description = Faker::Lorem.paragraph
 	price = Faker::Commerce.price.to_f
+	year = rand(1980..2010)
 
 	current_album = Album.create(name: name,
 								art_url: art_url,
 								artists: artist,
 								description: description,
-								price: price)
+								price: price,
+								year: year)
 
 	8.times do |i|
 		track_name = Faker::Company.name
 		track_number = i+1
+		sample_url = ["http://www.wavsource.com/snds_2015-09-20_4380281261564803/movie_stars/murphy/listen_up.wav", 
+						"http://www.wavsource.com/snds_2015-09-20_4380281261564803/movie_stars/murphy/worst_nightmare.wav",
+						"http://www.wavsource.com/snds_2015-09-20_4380281261564803/movie_stars/murphy/murphy_laugh.wav",
+						"http://www.wavsource.com/snds_2015-09-20_4380281261564803/movie_stars/murphy/be_cool.wav",
+						"http://www.wavsource.com/snds_2015-09-20_4380281261564803/movie_stars/murphy/48_hrs_class.wav",
+						"http://www.wavsource.com/snds_2015-09-20_4380281261564803/movie_stars/murphy/how_ya_doin_x.wav"].sample
 		Track.create(album_id: current_album.id,
 					name: track_name,
 					track_number: track_number,
-					price: 2.00)
+					price: 2.00,
+					sample_url: sample_url)
 	end
 
 
