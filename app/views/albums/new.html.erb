@@ -1,8 +1,6 @@
-<div class="col-lg-6 portfolio-item log-in-form">
+<div class="col-md-6 portfolio-item log-in-form">
 	<%if @user && @admins.include?(@user.email)%>
-	  <h3>
-	      <a href="#">Add and Album</a>
-	  </h3>
+	  <h3>Add an album</h3>
 	  <p>Enter details to enter an album in the database</p>
 	  <form method="post" action="/albums">
 
@@ -31,7 +29,7 @@
 	    <label>ISRC Code</label><br>
 	    <input type='textfield' name="isrc"><br>
 	    <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-	    <input type='submit' class='btn-md btn-warning'>
+	    <input type='submit' class='btn-md btn-warning submit-btn'>
 
 	  </form>
 	<a href=<%=new_track_path%>><h3>Add Tracks</h3></a>

@@ -1,4 +1,4 @@
-<div class="col-lg-6 portfolio-item log-in-form">
+<div class="col-md-6 portfolio-item log-in-form">
 	<%if @user && @admins.include?(@user.email)%>
 	  <h3>
 	      <a href="#">Add a Track</a>
@@ -33,7 +33,7 @@
 	    <label>ISRC Code</label><br>
 	    <input type='textfield' name="track_isrc"><br>
 	    <%= hidden_field_tag :authenticity_token, form_authenticity_token -%> <br>
-	    <input type='submit' class='btn-md btn-warning'>
+	    <input type='submit' class='btn-md btn-warning submit-btn'>
 	  </form>
 	<%else%>
 		<p>Beep Boop. Access Denied</p>

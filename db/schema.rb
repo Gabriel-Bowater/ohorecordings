@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 20150830033410) do
     t.string   "mp3_url"
     t.string   "aac_url"
     t.string   "ogg_url"
+    t.string   "alac_url"
     t.string   "sample_url"
     t.decimal  "price",        default: 2.0, null: false
     t.string   "track_isrc"

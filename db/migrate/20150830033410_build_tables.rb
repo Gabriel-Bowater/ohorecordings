@@ -51,6 +51,7 @@ class BuildTables < ActiveRecord::Migration
       t.string :mp3_url
       t.string :aac_url
       t.string :ogg_url
+      t.string :alac_url
       t.string :sample_url
       t.decimal :price, default: 2.00, null: false
       t.string :track_isrc
