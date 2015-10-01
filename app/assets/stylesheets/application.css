@@ -18,7 +18,10 @@ GENERAL
 ****************************/
 body {
   font-family:'Open Sans', sans-serif;
-  background:  black;#FF111A
+  /*background:  black;#FF111A*/
+  background-image: url("/images/recordstack.png");
+  background-repeat: repeat-y;
+  background-size: 100%;
 }
 
 body {
@@ -36,9 +39,9 @@ a:hover {
   color:black;
 }
 
-.navlink {
+.navlink a{
   text-decoration:none;
-  color:black;
+  color:#CCCCAA;
   font-style: bold;
 }
 
@@ -50,12 +53,13 @@ a:hover {
 }
 
 #background_div {
-  background: #9E9E84;
-  background-image: url("/images/recordstack.png");
+  /*background: #9E9E84;*/
+  background: rgba(204,204,170,0.85);
+  /*background-image: url("/images/recordstack.png");*/
   background-repeat: repeat-y;
   background-size: 100%;
-  border-left: double 3px black;
-  border-right: double 3px black;
+  border: double 3px black;
+  /*border-right: double 3px black;*/
 }
 
 /*img {
@@ -259,7 +263,7 @@ FRONT PAGE
 }
 
 .catalog-head {
-  color: #CCCCAA;
+  color: black;
 }
 
 .album-link {
