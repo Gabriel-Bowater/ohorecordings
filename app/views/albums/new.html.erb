@@ -2,39 +2,40 @@
 	<%if @user && @admins.include?(@user.email)%>
 	  <h3>Add an album</h3>
 	  <p>Enter details to enter an album in the database</p>
-	  <form method="post" action="/albums">
+	  <%= form_for @album, url: {action: "create"}, html: {class: "new-item-form", multipart: true} do |f|%>
+	  	<%= f.label :name, "Album name" %><br>
+	  	<%= f.text_field :name %><br>
+	  	<%= f.label :art_url, "Album art URL" %><br>
+	  	<%= f.text_field :art_url %><br>
+	  	<%= f.label :artists, "Artists" %><br>
+	  	<%= f.text_field :year %><br>
+	  	<%= f.label :year, "Year" %><br>
+	  	<%= f.text_field :year %><br>
+  		<%= f.label :isrc, "ISRC" %><br>
+	  	<%= f.text_field :isrc %><br>	  	
+	  	<%= f.label :description, "Description" %><br>
+	  	<%= f.text_area :description %><br>	
+	  	<%= f.label :price, "Price" %><br>
+	  	<%= f.number_field :price, step: "0.01", required: true%><br>	    	
+	  	<%= f.label :mp3, "MP3 Archive" %><br>
+	  	<%= f.file_field :mp3 %> <br>
+	  	<%= f.label :alac, "ALAC Archive" %><br>
+	  	<%= f.file_field :alac %> <br>
+	  	<%= f.label :aac, "AAC Archive" %><br>
+	  	<%= f.file_field :aac %> <br>
+	  	<%= f.label :ogg, "OGG Archive" %><br>
+	  	<%= f.file_field :ogg %> <br>
+	  	<%= f.label :flac, "FLAC Archive" %><br>
+	  	<%= f.file_field :flac %> <br>	  		 	
+	  	<%= f.submit class: "btn-md btn-warning submit-btn" %>
 
-	    <label>Album name</label><br>
-	    <input type='textfield' name="name" required><br>       
-	    <label>Album art URL</label><br>
-	    <input type='textfield' name="art_url" ><br>
-	    <label>Artists</label><p>format - John Smith, Judy Smart, and Kim Jones</p>
-	    <input type='textfield' name="artists" ><br>
-	    <label>Year</label><br>
-	    <input type='textfield' name="year"><br>
-	    <label>Album description</label><br>
-	    <input type='textarea' name="description"><br>
-	    <label>FLAC archive URL</label><br>
-	    <input type='textfield' name="flac_arch_url"><br>
-	    <label>MP3 archive URL</label><br>
-	    <input type='textfield' name="mp3_arch_url"><br>
-	    <label>AAC archive URL</label><br>
-	    <input type='textfield' name="AAC_arch_url"><br>
-	    <label>OGG archive URL</label><br>
-	    <input type='textfield' name="ogg_arch_url"><br>
-	    <label>ALAC archive URL</label><br>
-	    <input type='textfield' name="alac_arch_url"><br>
-	    <label>Price</label><br>
-	    <input type='number' step="0.01" name="price" required><br>
-	    <label>ISRC Code</label><br>
-	    <input type='textfield' name="isrc"><br>
-	    <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-	    <input type='submit' class='btn-md btn-warning submit-btn'>
+	  <% end %>
+	  <h1>_-_-_-_-_-_-</h1>
 
-	  </form>
 	<a href=<%=new_track_path%>><h3>Add Tracks</h3></a>
 	<%else%>
 		<p>Beep Boop. Access Denied</p>
 	<%end%>
+
 
 </div>

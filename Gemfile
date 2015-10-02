@@ -27,7 +27,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 
 #Amazon Web Server Simple Storage gem
-gem 'aws-sdk'
+gem 'aws-sdk', '<2.0'
+
+gem "paperclip"
 
 # Use Unicorn as the app server
 # gem 'unicorn'
