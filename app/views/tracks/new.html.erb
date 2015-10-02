@@ -4,6 +4,14 @@
 	      <a href="#">Add a Track</a>
 	  </h3>
 	  <p>Enter details to enter an album in the database</p>
+	 	
+	  <%= form_for @track, url: {action: "create"}, html: {class: "new-item-form", multipart: true} do |f| %>
+	  	<%= f.label :album, "Album" %>
+	  	<%= f.collection_select(:album_id, Album.all, :id, :name) %> 
+	  	<!-- TODO: rewrite form with form helpers. -->
+	  <% end %>
+
+	  <h1>_-_--_-___---------__---</h1>
 	  <form method="post" action="/tracks">
 	    <label>Album</label><br>
 	    <select name="album_id">

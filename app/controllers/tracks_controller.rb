@@ -3,6 +3,7 @@ class TracksController < ApplicationController
 	def new
 		@admins = ["gd.bowater@gmail.com", "davebow@netaccess.co.nz"]
 		@albums = Album.all
+		@track = Track.new
 	end
 
 	def create
