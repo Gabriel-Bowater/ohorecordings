@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151002031415) do
+ActiveRecord::Schema.define(version: 20151005205615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,18 +83,37 @@ ActiveRecord::Schema.define(version: 20151002031415) do
 
   create_table "tracks", force: :cascade do |t|
     t.integer  "album_id"
-    t.string   "name",                       null: false
+    t.string   "name",                              null: false
     t.integer  "track_number"
-    t.string   "flac_url"
-    t.string   "mp3_url"
-    t.string   "aac_url"
-    t.string   "ogg_url"
-    t.string   "alac_url"
     t.string   "sample_url"
-    t.decimal  "price",        default: 2.0, null: false
+    t.decimal  "price",               default: 2.0, null: false
     t.string   "track_isrc"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.string   "mp3_file_name"
+    t.string   "mp3_content_type"
+    t.integer  "mp3_file_size"
+    t.datetime "mp3_updated_at"
+    t.string   "alac_file_name"
+    t.string   "alac_content_type"
+    t.integer  "alac_file_size"
+    t.datetime "alac_updated_at"
+    t.string   "aac_file_name"
+    t.string   "aac_content_type"
+    t.integer  "aac_file_size"
+    t.datetime "aac_updated_at"
+    t.string   "ogg_file_name"
+    t.string   "ogg_content_type"
+    t.integer  "ogg_file_size"
+    t.datetime "ogg_updated_at"
+    t.string   "flac_file_name"
+    t.string   "flac_content_type"
+    t.integer  "flac_file_size"
+    t.datetime "flac_updated_at"
+    t.string   "sample_file_name"
+    t.string   "sample_content_type"
+    t.integer  "sample_file_size"
+    t.datetime "sample_updated_at"
   end
 
   create_table "users", force: :cascade do |t|

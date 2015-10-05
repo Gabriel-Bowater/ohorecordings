@@ -45,8 +45,7 @@ class Album < ActiveRecord::Base
 
 
   def nil_if_blank
-    null_attrs = ["art_url", "artists", "flac", "mp3", "aac", "ogg",
-                  "alac", "description", "isrc", "year"]
+    null_attrs = ["art_url", "artists", "description", "isrc", "year"]
     null_attrs.each { |attr| self[attr] = nil if self[attr].blank? }
   end
 
