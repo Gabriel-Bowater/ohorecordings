@@ -1,0 +1,10 @@
+<div style="padding-top:300px">
+<% if @user && @admins.include?(@user.email) %>
+	<% @tracks.each do |track| %>
+	<div class="album-link">
+		<p><%= track.name %>. <br> From album <%= track.album.name %>. <br>Created at <%= track.created_at %>. </p>
+		<%= link_to image_tag("/images/trashcan.png", :border=>0, :class => 'trashcan'),  "/tracks/#{track.id}",  method: :delete, data: { confirm: "Really delete track #{track.name} from database? There are #{track.track_rights.length} user track rights associated with this track" } %>
+	</div>
+	<% end %>
+<% end %>
+</div>

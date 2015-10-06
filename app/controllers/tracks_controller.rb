@@ -1,9 +1,24 @@
 class TracksController < ApplicationController
 
 	def new
-		@admins = ["gd.bowater@gmail.com", "davebow@netaccess.co.nz"]
 		@albums = Album.all
 		@track = Track.new
+	end
+
+	def index
+		if @user && @admins.include?(@user.email)
+			@tracks = Track.all.order(:album_id)
+		else
+			redirect_to "/"
+		end
+	end
+
+	def destroy
+		@track = Track.find(params[:id])
+		@track.destroy
+		flash.notice = "Track #{@track.name} deleted. "
+		redirect_to tracks_path
+
 	end
 
 	def create
@@ -18,7 +33,6 @@ class TracksController < ApplicationController
 		end
 		
 		redirect_to album_path(params[:track][:album_id])
-		# render text: params[:track][:track_number]
 	end
 
 	private 
@@ -32,4 +46,3 @@ class TracksController < ApplicationController
 	
 end
 
-# (id: integer, album_id: integer, name: string, track_number: integer, flac_url: string, mp3_url: string, aac_url: string, ogg_url: string, sample_url: string, description: string, price: decimal, track_isrc: string, created_at: datetime, updated_at: datetime

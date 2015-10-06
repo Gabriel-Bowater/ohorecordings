@@ -337,6 +337,15 @@ SINGLE ALBUM PAGE
   /*margin-right: .5%*/
 }
 
+.album-trashcan {
+  width: 3%;
+  float: right;
+  /*position: absolute;*/
+  display: inline;
+  margin: -20px 1% 0 0;
+  padding: 2px;
+  /*margin-right: .5%*/
+}
 
 .track-order-button {
   display: inline-block;

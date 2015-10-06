@@ -8,4 +8,8 @@
       <p class="album-price"><%=album.price.round(2)%></p>
     </div>
   </a>
+  <% if @user && @admins.include?(@user.email)  %>
+  <%= link_to image_tag("/images/trashcan.png", :border=>0, :class => 'album-trashcan'),  "/albums/#{album.id}",  method: :delete, data: { confirm: "Really delete album #{album.name} from database? There are #{album.album_rights.length} user album rights associated with this album" } %>
+  <% end %>
+
 <%end%>

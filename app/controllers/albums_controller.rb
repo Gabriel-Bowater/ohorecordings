@@ -8,8 +8,14 @@ class AlbumsController < ApplicationController
   end
 
 	def new
-		@admins = ["gd.bowater@gmail.com", "davebow@netaccess.co.nz"]
 		@album = Album.new
+	end
+
+	def destroy
+		@album = Album.find(params[:id])
+		@album.destroy
+		flash.notice = "Album #{@album.name} deleted. "
+		redirect_to "/"
 	end
 
 	def create
@@ -27,7 +33,10 @@ class AlbumsController < ApplicationController
 	private 
 
 	def album_params
-    params.require(:album).permit(:name, :art_url, :year, :description, :artists, :isrc, :price, :mp3, :alac, :aac, :ogg, :flac)
+    params.require(:album).permit(:name, :art_url, :year, 
+    														:description, :artists, :isrc, 
+    														:price, :mp3, :alac, 
+    														:aac, :ogg, :flac)
   end
 	
 end
