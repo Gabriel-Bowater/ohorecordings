@@ -5,6 +5,12 @@ class AlbumsController < ApplicationController
   def show
     @album = Album.find(params[:id])
     @tracks = Track.where(album_id: @album.id).order(:track_number)
+  	@formats = Array.new
+  	@formats << "mp3" if @album.mp3_file_name
+  	@formats << "ogg" if @album.ogg_file_name
+  	@formats << "m4a" if @album.alac_file_name
+  	@formats << "aac" if @album.aac_file_name
+  	@formats << "flac" if @album.flac_file_name
   end
 
 	def new

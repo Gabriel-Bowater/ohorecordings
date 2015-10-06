@@ -22,7 +22,9 @@
   <p class="album-desc"><%=@album.description%></p>
   <p class="album-desc">By <%=@album.artists%></p>
   <p class="album-desc">Released <%=@album.year%></p>
-
+  <p class="album-desc">Available Formats: <% @formats.length.times do |i| %>
+                                              <%= "#{@formats[i]} " %>
+                                            <% end %>
 </div>
   <div>
     <h2>Track Listing:</h2>
@@ -55,7 +57,7 @@
       </p>
       </section>
     <%end%>
-
+    <p>All samples served in mp3 format</p>
   </div>
 </div>
 <script>
