@@ -1,11 +1,10 @@
 <br>
 <div id="album-show-main">
 <div>
-  <img src=<%=@album.art_url%> class="album-page-art">
+  <a href=<%= @album.art_url %>  id="album-art"><img src=<%=@album.art_url%> class="album-page-art" alt=<%= @album.name %>></a>
   <h1 class="album-name"><%=@album.name%></h1>
-  <!-- <a href="/orders/<%=@album.id%>" name=<%=@album.id%>><img src="/images/cart.png" class="big-cart"></a> -->
   <% if @user && @album.in_cart(@user.id) %>
-    <a href=<%=orders_path%>><img src="/images/incart.png" class="big-cart"></a>
+    <a href=<%=orders_path%>><img src="/images/incart.png" class="big-cart" alt=<%= @album.name %>></a>
   <% elsif @user && @album.in_library(@user.id) %>    
     <a href=<%=user_path%>><img src="/images/inlibrary.png" class="big-cart"></a>
   <%else%>
@@ -22,9 +21,10 @@
   <p class="album-desc"><%=@album.description%></p>
   <p class="album-desc">By <%=@album.artists%></p>
   <p class="album-desc">Released <%=@album.year%></p>
-  <p class="album-desc">Available Formats: <% @formats.length.times do |i| %>
-                                              <%= "#{@formats[i]} " %>
-                                            <% end %>
+  <p class="album-desc">Available Formats: 
+    <% @formats.length.times do |i| %>
+      <%= "#{@formats[i]} " %>
+    <% end %>
 </div>
   <div>
     <h2>Track Listing:</h2>

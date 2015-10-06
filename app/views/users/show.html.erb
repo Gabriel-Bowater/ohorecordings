@@ -6,7 +6,7 @@
 <%if @user_albums.length > 0%>
 	<%@user_albums.each do |album|%>
 		<h2><%=album.name%></h2>
-		<p><a href="">Generate Download Link</a></p>
+		<p><a href="" class="generate">Generate Download Link</a></p>
 	<%end%>
 <%else%>
 	<p>No albums yet. Take a look at our <a href="/">catalog</a>.</p>
