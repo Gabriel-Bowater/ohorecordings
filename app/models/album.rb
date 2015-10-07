@@ -41,6 +41,8 @@ class Album < ActiveRecord::Base
     false
   end
 
+
+
   protected
 
 

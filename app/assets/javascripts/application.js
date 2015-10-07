@@ -18,7 +18,9 @@
 $(document).ready(function() {
 
 	$(".generate").click(function(event){
-		alert("money baby")
+		event.preventDefault();
+		
+		$(".link-box").slideDown();
 	});
 
 	var $overlay = $('<div id="overlay"></div>');
