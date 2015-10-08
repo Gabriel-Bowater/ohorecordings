@@ -69,7 +69,7 @@
 <%if @user_tracks.length > 0%>
 	<%@user_tracks.each do |track|%>
 		<h2><%=track.name%></h2>
-		<p><a href="" class="generate-track-link">Generate Download Link</a></p>
+		<p class="generate-track-link"><a href="">Generate Download Link</a></p>
 		<div class="track-link-box">
 			<h2>Available download formats</h2>
 			<% if track.mp3_file_name %>
