@@ -3,7 +3,7 @@
 	<h3 class="catalog-head">Albums in cart -</h3>
 	<% if @user_album_orders%>
 		<% @user_album_orders.each do |album| %>
-			<p><%= album.album.name + "......" + album.album.price.round(2).to_s %></p> 
+			<p><%= album.album.name + "......" + number_to_currency(album.album.price) %></p> 
 			<%= link_to image_tag("/images/trashcan.png", :border=>0, :class => 'trashcan'),  "/album_orders/#{album.id}",  method: :delete, data: { confirm: 'Remove item from cart?' } %>
 			<br>
 		<% end %>
@@ -14,12 +14,12 @@
 	<h3 class="catalog-head">Tracks in cart -</h3>
 	<% if @user_track_orders%>
 		<% @user_track_orders.each do |track| %>
-			<p><%= track.track.name + "......" + track.track.price.round(2).to_s %></p>
+			<p><%= track.track.name + "......" + number_to_currency(track.track.price) %></p>
 			<%= link_to image_tag("/images/trashcan.png", :border=>0, :class => 'trashcan'),  "/track_orders/#{track.id}",  method: :delete, data: { confirm: 'Remove item from cart?' } %>
 		<% end %>
 	<% end %>
 
-	<h3 class="catalog-head">Total: <%= @order_total.round(2).to_s%></h3>
+	<h3 class="catalog-head">Total: <u><%= number_to_currency(@order_total)%></u></h3>
 
 	<% if @order_total != 0 %>
 		<h3 class="catalog-head"> Checkout with Paypal </h3>
@@ -28,5 +28,5 @@
 		<%= link_to image_tag("/images/paypal.png", :border=>0, :class => 'paypal'), "/orders/#{@order.id}" ,method: :put%>
 
 	<%end%>
-	<a href="/"><h3 class="catalog-head"> Continue Shopping </h3></a>
+	<a href="/"><h2 class="catalog-head submit-btn" style="margin:auto;max-width:30%;color:white;text-align:center"> Continue Shopping </h2></a>
 </div>

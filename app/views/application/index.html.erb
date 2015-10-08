@@ -5,7 +5,7 @@
     <div >
       <p class="album-name"><%=album.name%></p>
       <p class="album-name"><%=album.year%></p>
-      <p class="album-price"><%=album.price.round(2)%></p>
+      <p class="album-price"><%=number_to_currency(album.price)%></p>
     </div>
   </a>
   <% if @user && @admins.include?(@user.email)  %>

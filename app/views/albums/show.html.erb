@@ -17,7 +17,7 @@
     </form>
   <%end%>
   <div class="spacer"></div>
-  <p class="album-price"><%=@album.price.round(2)%></p>
+  <p class="album-price"><%=number_to_currency(@album.price)%></p>
   <p class="album-desc"><%=@album.description%></p>
   <p class="album-desc">By <%=@album.artists%></p>
   <p class="album-desc">Released <%=@album.year%></p>
@@ -36,6 +36,7 @@
         <% else %>
           <%=track.track_number%>: <%=track.name%>
         <% end %>
+        <p class="track-listing-price" style="float:right"><%= number_to_currency(track.price)  %></p>
         <% if @user && track.in_cart(@user.id) %>
           <img src="/images/incart.png" class="small-cart">
         <% elsif @user && track.in_library(@user.id) %>    

@@ -426,12 +426,25 @@ USER LIBRARY PAGE
   padding-bottom: 40px
 }
 
-.link-box{
+.album-link-box{
   display: none;
-  background: rgba(20,121,178,0.85);
-  border: double 5px #092B42;
+  background: rgb(204,204,170);
+  border: solid #888888 1px;
+  box-shadow: 10px 10px 1px #092B42;
   padding: 10px;
-  margin-bottom: 20px
+  margin-bottom: 20px;
+  max-width:95%;
+  margin-left: 2.5%
+}
+
+.track-link-box{
+  display: none;
+  background: rgb(204,204,170);
+  box-shadow: 10px 10px 5px #888888;
+  padding: 10px;
+  margin-bottom: 20px;
+  max-width:95%;
+  margin-left: 2.5%
 }
 
 .generate-download-btn {
@@ -459,7 +472,9 @@ SHOPPING CART PAGE
 .orders-div{
   width: 75%;
   margin-left: auto;
-  margin-right: auto
+  margin-right: auto;
+  padding: 10px;
+  box-shadow: 10px 10px 1px #092B42;
 }
 .paypal {
   display: block;

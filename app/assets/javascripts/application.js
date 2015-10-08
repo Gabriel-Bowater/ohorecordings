@@ -17,10 +17,16 @@
 
 $(document).ready(function() {
 
-	$(".generate").click(function(event){
+	$(".generate-album-link").click(function(event){
 		event.preventDefault();
 		
-		$(".link-box").slideDown();
+		$(".album-link-box").slideToggle();
+	});
+
+	$(".generate-track-link").click(function(event){
+		event.preventDefault();
+		
+		$(".track-link-box").slideToggle();
 	});
 
 	var $overlay = $('<div id="overlay"></div>');

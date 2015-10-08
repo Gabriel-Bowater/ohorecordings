@@ -6,8 +6,8 @@
 <%if @user_albums.length > 0%>
 	<%@user_albums.each do |album|%>
 		<h2><%=album.name%></h2>
-		<p><a href="" class="generate">Generate Download Link</a></p>
-		<div class="link-box">
+		<p class="generate-album-link"><a href="" >Generate Download Link</a></p>
+		<div class="album-link-box">
 			<h2>Available download formats</h2>
 			<% if album.mp3_file_name %>
 		    <form  name='generate_mp3' action='/users/<%= @user.id %>' class="generate-form" >
@@ -69,7 +69,60 @@
 <%if @user_tracks.length > 0%>
 	<%@user_tracks.each do |track|%>
 		<h2><%=track.name%></h2>
-		<p><a href="">Generate Download Link</a></p>
+		<p><a href="" class="generate-track-link">Generate Download Link</a></p>
+		<div class="track-link-box">
+			<h2>Available download formats</h2>
+			<% if track.mp3_file_name %>
+		    <form  name='generate_mp3' action='/users/<%= @user.id %>' class="generate-form" >
+		      <div>
+		          <input type='hidden' name='mp3_track_id' value=<%=track.id%>>
+		          <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+		          <input type="image" name="mp3_img" src="/images/mp3.png" border="0" alt="Submit" class="generate-download-btn"/>
+		      </div>
+		    	<label><%= filesize(track.mp3_file_size) %></label>
+		    </form>
+			<% end %>
+			<% if track.ogg_file_name %>
+		    <form  name='generate_ogg' action='/users/<%= @user.id %>' class="generate-form" >
+		      <div>
+		          <input type='hidden' name='ogg_track_id' value=<%=track.id%>>
+		          <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+		          <input type="image" name="ogg_img" src="/images/ogg.png" border="0" alt="Submit" class="generate-download-btn"/>
+		      </div>
+		    	<label><%= filesize(track.ogg_file_size) %></label>
+		    </form>
+			<% end %>
+			<% if track.aac_file_name %>
+		    <form  name='generate_aac' action='/users/<%= @user.id %>' class="generate-form" >
+		      <div>
+		          <input type='hidden' name='aac_track_id' value=<%=track.id%>>
+		          <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+		          <input type="image" name="aac_img" src="/images/aac.png" border="0" alt="Submit" class="generate-download-btn"/>
+		      </div>
+		    	<label><%= filesize(track.aac_file_size) %></label>
+		    </form>
+			<% end %>
+			<% if track.alac_file_name %>
+		    <form  name='generate_alac' action='/users/<%= @user.id %>' class="generate-form" >
+		      <div>
+		          <input type='hidden' name='alac_track_id' value=<%=track.id%>>
+		          <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+		          <input type="image" name="alac_img" src="/images/m4a.png" border="0" alt="Submit" class="generate-download-btn"/>
+		      </div>
+		    	<label><%= filesize(track.alac_file_size) %></label>
+		    </form>
+			<% end %>
+			<% if track.flac_file_name %>
+		    <form  name='generate_flac' action='/users/<%= @user.id %>' class="generate-form" >
+		      <div>
+		          <input type='hidden' name='flac_track_id' value=<%=track.id%>>
+		          <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+		          <input type="image" name="flac_img" src="/images/flac.png" border="0" alt="Submit" class="generate-download-btn"/>
+		      </div>
+		    	<label><%= filesize(track.flac_file_size) %></label>
+		    </form>
+			<% end %>											
+		</div>
 	<%end%>
 <%else%>
 	<p>No individual tracks in your library yet.</p>
