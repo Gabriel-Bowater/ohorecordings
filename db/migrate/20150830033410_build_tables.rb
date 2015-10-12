@@ -77,12 +77,15 @@ class BuildTables < ActiveRecord::Migration
       t.belongs_to :user
 
       t.boolean :completed, default: false, null: false
+      t.datetime :completed_at
+      t.timestamps null: false
     end
 
     create_table :album_orders do |t|
       t.belongs_to :order
       t.belongs_to :album
 
+      t.decimal :price
       t.timestamps null: false
     end
 
@@ -90,6 +93,7 @@ class BuildTables < ActiveRecord::Migration
       t.belongs_to :order
       t.belongs_to :track
 
+      t.decimal :price
       t.timestamps null: false
     end
 

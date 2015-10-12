@@ -16,11 +16,13 @@ class OrdersController < ApplicationController
 			end
 			
 			if params[:album_id]
-				AlbumOrder.create(order_id: @order.id, album_id: params[:album_id])
+				album = Album.find(params[:album_id])
+				AlbumOrder.create(order_id: @order.id, album_id: album.id, price: album.price)
 			end
 
 			if params[:track_id]
-				TrackOrder.create(order_id: @order.id, track_id: params[:track_id])
+				track = Track.find(params[:track_id])
+				TrackOrder.create(order_id: @order.id, track_id: track.id, price: album.price)
 			end
 
 			redirect_to orders_path
@@ -54,5 +56,22 @@ class OrdersController < ApplicationController
 		order.update(completed: true)
 		redirect_to user_path
 	end
+
+	private
+
+	 def paypal_url(return_path)
+    values = {
+        business: "merchant@gotealeaf.com",
+        cmd: "_xclick",
+        upload: 1,
+        return: "#{Rails.application.secrets.app_host}#{return_path}",
+        invoice: id,
+        amount: course.price,
+        item_name: course.name,
+        item_number: course.id,
+        quantity: '1'
+    }
+    "#{Rails.application.secrets.paypal_host}/cgi-bin/webscr?" + values.to_query
+  end
 
 end

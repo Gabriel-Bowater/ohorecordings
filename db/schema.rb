@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20151005205615) do
   create_table "album_orders", force: :cascade do |t|
     t.integer  "order_id"
     t.integer  "album_id"
+    t.decimal  "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -63,13 +64,17 @@ ActiveRecord::Schema.define(version: 20151005205615) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "user_id"
-    t.boolean "completed", default: false, null: false
+    t.integer  "user_id"
+    t.boolean  "completed",    default: false, null: false
+    t.datetime "completed_at"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "track_orders", force: :cascade do |t|
     t.integer  "order_id"
     t.integer  "track_id"
+    t.decimal  "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

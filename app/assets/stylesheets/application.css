@@ -54,7 +54,8 @@ a:hover {
 
 #background_div {
   /*background: #9E9E84;*/
-  background: rgba(204,204,170,0.85);
+  /*background: rgba(204,204,170,0.85);*/
+  background: rgba(255,255,255,0.9);
   /*background-image: url("/images/recordstack.png");*/
   background-repeat: repeat-y;
   background-size: 100%;
@@ -269,7 +270,7 @@ FRONT PAGE
 .album-link {
   display: block;
   height: 120px;
-  background: rgba(204,204,170,0.85);
+  background: rgba(255,255,255,1);
   border-radius:4px;
   margin: 5px;
   padding: 5px;
