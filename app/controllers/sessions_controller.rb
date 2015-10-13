@@ -12,10 +12,10 @@ class SessionsController < ApplicationController
 	      # response = session[:user_id]
 	    else
 	      # redirect_to '/'
-	      flash.alert = "Incorrect Password"
+	      flash.now[:alert] = "Incorrect Password"
 	    end
 	  else
-	  	flash.alert = "User not found"
+	  	flash.now[:alert] = "User not found"
   	end
 	redirect_to '/'
   end

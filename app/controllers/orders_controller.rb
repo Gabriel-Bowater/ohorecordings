@@ -51,10 +51,27 @@ class OrdersController < ApplicationController
 		# render text: params
 	end
 
+ def paypal_url(order_total, id, user)
+    values = {
+        business: "gd.bowater-facilitator@gmail.com",
+        cmd: "_xclick",
+        return: "#{Rails.application.secrets.app_host}users/#{@user.id}",
+        invoice: "#{SecureRandom.hex(2)}#{id}",
+        amount: order_total,
+        item_name: "Oho Recordings order for #{ @user.given_name } #{ @user.family_name }. #{Time.now}",
+        no_shipping: 1,
+        currency_code: "NZD",
+        rm: 0,
+        notify_url: "#{Rails.application.secrets.app_host}/hook"
+    }
+    "#{Rails.application.secrets.paypal_host}/cgi-bin/webscr?" + values.to_query
+  end
+
   def hook
     params.permit! # Permit all Paypal input params
     status = params[:payment_status]
-    order = Order.find(params[:invoice])
+    id = params[:invoice].slice(4..7).to_i
+    order = Order.find(id)
     if status == "Completed"
     	AlbumOrder.where(order_id: order.id).each do |album|
 				AlbumRight.create(user_id: order.user_id, album_id: album.album_id)
@@ -62,24 +79,10 @@ class OrdersController < ApplicationController
 			TrackOrder.where(order_id: order.id).each do |track|
 				TrackRight.create(user_id: order.user_id, track_id: track.track_id)
 			end
-			order.update(completed: true,  completed_at: Time.now, 
+			order.update(completed: true,  completed_at: Time.now, amount_paid: params[:mc_gross],
 									 status: status, transaction_id: params[:txn_id]) #Test if you get the price back TODO | amount_paid: params[:amount_paid], |
     end
     render nothing: true
-  end
-
- def paypal_url(order_total, id, user)
-    values = {
-        business: "gd.bowater-facilitator@gmail.com",
-        cmd: "_xclick",
-        return: "#{Rails.application.secrets.app_host}users/#{@user.id}",
-        invoice: id,
-        amount: order_total,
-        item_name: "Oho Recordings order for #{ @user.given_name } #{ @user.family_name }. #{Time.now}",
-        no_shipping: 1,
-        notify_url: "#{Rails.application.secrets.app_host}/hook"
-    }
-    "#{Rails.application.secrets.paypal_host}/cgi-bin/webscr?" + values.to_query
   end
 
 end
