@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   get '/application/about' => 'application#about'
 
+  post "/hook" => "orders#hook"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

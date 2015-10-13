@@ -65,10 +65,13 @@ ActiveRecord::Schema.define(version: 20151005205615) do
 
   create_table "orders", force: :cascade do |t|
     t.integer  "user_id"
-    t.boolean  "completed",    default: false, null: false
+    t.boolean  "completed",      default: false, null: false
+    t.string   "status"
+    t.string   "transaction_id"
     t.datetime "completed_at"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.decimal  "amount_paid"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   create_table "track_orders", force: :cascade do |t|

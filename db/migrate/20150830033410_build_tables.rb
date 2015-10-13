@@ -77,7 +77,11 @@ class BuildTables < ActiveRecord::Migration
       t.belongs_to :user
 
       t.boolean :completed, default: false, null: false
+      t.string :status
+      t.string :transaction_id
       t.datetime :completed_at
+      t.decimal :amount_paid
+      
       t.timestamps null: false
     end
 

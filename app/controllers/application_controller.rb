@@ -7,9 +7,13 @@ class ApplicationController < ActionController::Base
 
   def set_user_and_admins
   	if session[:user_id]
-  		@user = User.find(session[:user_id])
-  	else
-  		@user = nil
+      if User.exists?(session[:user_id])
+  		  @user = User.find(session[:user_id])
+
+  	  else
+  		  @user = nil
+        session[:user_id] = nil
+      end
   	end
     @admins = ["gd.bowater@gmail.com", "davebow@netaccess.co.nz"]
   end

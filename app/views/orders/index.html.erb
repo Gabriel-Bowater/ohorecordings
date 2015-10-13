@@ -24,8 +24,10 @@
 	<% if @order_total != 0 %>
 		<h3 class="catalog-head"> Checkout with Paypal </h3>
 
-
-		<%= link_to image_tag("/images/paypal.png", :border=>0, :class => 'paypal'), "/orders/#{@order.id}" ,method: :put%>
+		<%= form_tag("/orders/#{@order.id}", method: "put") do |f| %>
+			<%= hidden_field_tag("order_total", @order_total) %>
+    	<%= image_submit_tag("/images/paypal.png", class: "paypal") %>
+    <% end %>
 
 	<%end%>
 	<a href="/"><h2 class="catalog-head submit-btn" style="margin:auto;max-width:30%;color:white;text-align:center"> Continue Shopping </h2></a>

@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+	protect_from_forgery except: [:hook]
+	
 	def new
 		render text: params
 	end
@@ -22,7 +24,7 @@ class OrdersController < ApplicationController
 
 			if params[:track_id]
 				track = Track.find(params[:track_id])
-				TrackOrder.create(order_id: @order.id, track_id: track.id, price: album.price)
+				TrackOrder.create(order_id: @order.id, track_id: track.id, price: track.price)
 			end
 
 			redirect_to orders_path
@@ -43,33 +45,39 @@ class OrdersController < ApplicationController
 	end
 
 	def update
-		paid = true
+
 		order = Order.find(params[:id])
-		if paid
-			AlbumOrder.where(order_id: order.id).each do |album|
+		redirect_to paypal_url(params[:order_total], params[:id], order.user)
+		# render text: params
+	end
+
+  def hook
+    params.permit! # Permit all Paypal input params
+    status = params[:payment_status]
+    order = Order.find(params[:invoice])
+    if status == "Completed"
+    	AlbumOrder.where(order_id: order.id).each do |album|
 				AlbumRight.create(user_id: order.user_id, album_id: album.album_id)
 			end
 			TrackOrder.where(order_id: order.id).each do |track|
 				TrackRight.create(user_id: order.user_id, track_id: track.track_id)
 			end
-		end
-		order.update(completed: true)
-		redirect_to user_path
-	end
+			order.update(completed: true,  completed_at: Time.now, 
+									 status: status, transaction_id: params[:txn_id]) #Test if you get the price back TODO | amount_paid: params[:amount_paid], |
+    end
+    render nothing: true
+  end
 
-	private
-
-	 def paypal_url(return_path)
+ def paypal_url(order_total, id, user)
     values = {
-        business: "merchant@gotealeaf.com",
+        business: "gd.bowater-facilitator@gmail.com",
         cmd: "_xclick",
-        upload: 1,
-        return: "#{Rails.application.secrets.app_host}#{return_path}",
+        return: "#{Rails.application.secrets.app_host}users/#{@user.id}",
         invoice: id,
-        amount: course.price,
-        item_name: course.name,
-        item_number: course.id,
-        quantity: '1'
+        amount: order_total,
+        item_name: "Oho Recordings order for #{ @user.given_name } #{ @user.family_name }. #{Time.now}",
+        no_shipping: 1,
+        notify_url: "#{Rails.application.secrets.app_host}/hook"
     }
     "#{Rails.application.secrets.paypal_host}/cgi-bin/webscr?" + values.to_query
   end
