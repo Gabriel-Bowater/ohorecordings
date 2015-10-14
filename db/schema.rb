@@ -125,7 +125,7 @@ ActiveRecord::Schema.define(version: 20151005205615) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                          null: false
+    t.string   "email",                           null: false
     t.string   "given_name"
     t.string   "family_name"
     t.string   "address_one"
@@ -133,9 +133,9 @@ ActiveRecord::Schema.define(version: 20151005205615) do
     t.string   "address_city"
     t.string   "address_country"
     t.string   "password_hash"
-    t.boolean  "email_confirmed", default: true, null: false
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.boolean  "email_confirmed", default: false, null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
 end

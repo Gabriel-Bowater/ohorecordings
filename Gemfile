@@ -31,7 +31,7 @@ gem 'aws-sdk', '<2.0'
 
 gem "paperclip"
 
-
+gem "recaptcha", :require => "recaptcha/rails"
 
 # Use Unicorn as the app server
 # gem 'unicorn'

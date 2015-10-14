@@ -13,7 +13,7 @@ class BuildTables < ActiveRecord::Migration
       t.string :address_city
       t.string :address_country
       t.string :password_hash
-      t.boolean :email_confirmed, null: false, default: true
+      t.boolean :email_confirmed, null: false, default: false
 
       t.timestamps null: false
     end

@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
 
   def new
+    @countries = countries
+    # render text: @countries
   end
 
   def show
@@ -61,17 +63,97 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(email: params[:email].downcase,
-                      given_name: params[:given_name],
-                      family_name: params[:family_name],
-                      address_one: params[:address_one],
-                      address_two: params[:address_two],
-                      address_city: params[:address_city],
-                      address_country: params[:address_country])
-    @user.password = params[:password]
-    @user.save!
-    flash.now[:notice] = "User profile created. Please check your email inbox for an email confirmation message."
-    redirect_to '/'
+    if verify_recaptcha #Comment out for ngrok testing
+      @user = User.new(email: params[:email].downcase,
+                        given_name: params[:given_name],
+                        family_name: params[:family_name],
+                        address_one: params[:address_one],
+                        address_two: params[:address_two],
+                        address_city: params[:address_city],
+                        address_country: params[:address_country],
+                        email_confirmed: true) #for testing
+      @user.password = params[:password]
+      @user.save!
+      flash[:alert] = "User profile created. Please check your email inbox for an email confirmation message."
+      redirect_to '/'
+    else #Comment out for ngrok testing
+      flash[:alert] = "Existential crisis detected. Pleace click the reCaptcha tick box to establish your reality."
+      redirect_to new_user_path
+    end #Comment out for ngrok testing
+  end
+
+  private
+
+  def countries
+    arr = ["New Zealand", "Australia", "United Kingdom",
+          "United States of America", "Ireland", "Canada",
+          "Afghanistan", "Albania", "Algeria", 
+          "American Samoa", "Andorra", "Angola", 
+          "Anguilla", "Antarctica", "Antigua and Barbuda", 
+          "Argentina", "Armenia", "Aruba",  
+          "Austria", "Azerbaijan", "Bahamas", "Bahrain", 
+          "Bangladesh", "Barbados", "Belarus", "Belgium", 
+          "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia",
+          "Bosnia and Herzegowina", "Botswana", "Bouvet Island",
+          "Brazil", "British Indian Ocean Territory",
+          "Brunei Darussalam", "Bulgaria", "Burkina Faso",
+          "Burundi", "Cambodia", "Cameroon", 
+          "Cape Verde", "Cayman Islands", "Central African Republic", 
+          "Chad", "Chile", "China", "Christmas Island", 
+          "Cocos (Keeling) Islands", "Colombia", "Comoros", 
+          "Congo", "Congo, (DRC)", 
+          "Cook Islands", "Costa Rica", "Cote d'Ivoire", 
+          "Croatia (Hrvatska)", "Cuba", "Cyprus", "Czech Republic", 
+          "Denmark", "Djibouti", "Dominica", "Dominican Republic", 
+          "East Timor", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", 
+          "Eritrea", "Estonia", "Ethiopia", "Falkland Islands (Malvinas)", 
+          "Faroe Islands", "Fiji", "Finland", "France", "France Metropolitan", 
+          "French Guiana", "French Polynesia", "French Southern Territories", 
+          "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", 
+          "Greece", "Greenland", "Grenada", "Guadeloupe", "Guam", 
+          "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", 
+          "Heard and Mc Donald Islands", "Holy See (Vatican City State)", 
+          "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", 
+          "Iran (Islamic Republic of)", "Iraq", "Israel", "Italy", 
+          "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", 
+          "North Korea (DPRK)", "South Korea (ROK)", 
+          "Kuwait", "Kyrgyzstan", "Lao, People's Democratic Republic", 
+          "Latvia", "Lebanon", "Lesotho", "Liberia", "Libyan Arab Jamahiriya", 
+          "Liechtenstein", "Lithuania", "Luxembourg", "Macau", 
+          "Macedonia", "Madagascar", "Malawi", 
+          "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", 
+          "Martinique", "Mauritania", "Mauritius", "Mayotte", "Mexico", 
+          "Micronesia, Federated States of", "Moldova, Republic of", 
+          "Monaco", "Mongolia", "Montserrat", "Morocco", "Mozambique", 
+          "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", 
+          "Netherlands Antilles", "New Caledonia", "New Zealand", "Nicaragua", 
+          "Niger", "Nigeria", "Niue", "Norfolk Island", "Northern Mariana Islands", 
+          "Norway", "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", 
+          "Paraguay", "Peru", "Philippines", "Pitcairn", "Poland", 
+          "Portugal", "Puerto Rico", "Qatar", "Reunion", "Romania", 
+          "Russian Federation", "Rwanda", "Saint Kitts and Nevis", 
+          "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", 
+          "San Marino", "Sao Tome and Principe", "Saudi Arabia", 
+          "Senegal", "Seychelles", "Sierra Leone", "Singapore", 
+          "Slovakia (Slovak Republic)", "Slovenia", "Solomon Islands", 
+          "Somalia", "South Africa", "South Georgia / South Sandwich Is.", 
+          "Spain", "Sri Lanka", "St. Helena", "St. Pierre and Miquelon", 
+          "Sudan", "Suriname", "Svalbard and Jan Mayen Islands", "Swaziland", 
+          "Sweden", "Switzerland", "Syrian Arab Republic", 
+          "Taiwan, Province of China", "Tajikistan", "Tanzania, United Republic of", 
+          "Thailand", "Togo", "Tokelau", "Tonga", "Trinidad and Tobago", "Tunisia", 
+          "Turkey", "Turkmenistan", "Turks and Caicos Islands", "Tuvalu", "Uganda", 
+          "Ukraine", "United Arab Emirates",  
+          "United States Minor Outlying Islands", "Uruguay", "Uzbekistan", "Vanuatu", 
+          "Venezuela", "Vietnam", "Virgin Islands (British)", "Virgin Islands (U.S.)", 
+          "Wallis and Futuna Islands", "Western Sahara", "Yemen", "
+          Yugoslavia", "Zambia", "Zimbabwe"]
+          
+    return_arr = []
+    arr.each do |item|
+      return_arr << [item, item]
+    end
+    return_arr
   end
 
 

@@ -32,12 +32,13 @@
           <input type='textfield' name="address_two"><br>
           <label>Address - City</label><br>
           <input type='textfield' name="address_city" required><br>
-          <label>Address - Country</label><br>
-          <input type='textfield' name="address_country" required><br>
+          <label>Country</label><br>
+          <%= select_tag "address_country", options_for_select(@countries) %> <br>
           <label>Password</label><br>
           <input type='password' name="password" required><br>
           <label>Confirm Password</label><br>
           <input type='password' name="confirm_password" required><br>
+          <br><%= recaptcha_tags %> </br>
           <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
           <input type='submit' class='btn-md btn-warning submit-btn'>
 

@@ -8,7 +8,6 @@
 	  <%= form_for @track, url: {action: "create"}, html: {class: "new-item-form", multipart: true} do |f| %>
 	  	<%= f.label :album, "Album" %><br>
 	  	<%= f.collection_select(:album_id, Album.all, :id, :name) %> <br>
-	  	<!-- TODO: rewrite form with form helpers. -->
 	  	<%= f.label :name, "Track name"%><br>
 	  	<%= f.text_field :name, required: true%><br>
 	  	<%= f.label :track_number, "Track Number - Leave blank to autonumber" %><br>
