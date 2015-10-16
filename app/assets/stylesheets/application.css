@@ -249,9 +249,10 @@ a {
     margin-bottom:12px;
   }
   header {
-    border-bottom:5px solid #FF111A;
+    border-bottom:5px solid black;
     /*#57A8E0 #105B63*/
     margin-bottom: 60px;
+    /*#FF111A*/
   }
 }
 /*******************************
