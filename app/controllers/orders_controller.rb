@@ -47,8 +47,8 @@ class OrdersController < ApplicationController
 	def update
 
 		order = Order.find(params[:id])
-		redirect_to paypal_url(params[:order_total], params[:id], order.user)
-		# render text: params
+		# redirect_to paypal_url(params[:order_total], params[:id], order.user)
+		render text: params
 	end
 
  def paypal_url(order_total, id, user)
