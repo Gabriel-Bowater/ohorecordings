@@ -55,16 +55,16 @@ class OrdersController < ApplicationController
     values = {
         business: "gd.bowater-facilitator@gmail.com",
         cmd: "_xclick",
-        return: "#{Rails.application.secrets.app_host}users/#{@user.id}",
+        return: "#{Rails.configuration.app_host}users/#{@user.id}",
         invoice: "#{SecureRandom.hex(2)}#{id}",
         amount: order_total,
         item_name: "Oho Recordings order for #{ @user.given_name } #{ @user.family_name }. #{Time.now}",
         no_shipping: 1,
         currency_code: "NZD",
         rm: 0,
-        notify_url: "#{Rails.application.secrets.app_host}/hook"
+        notify_url: "#{Rails.configuration.app_host}/hook"
     }
-    "#{Rails.application.secrets.paypal_host}/cgi-bin/webscr?" + values.to_query
+    "https://www.paypal.com" + values.to_query
   end
 
   def hook

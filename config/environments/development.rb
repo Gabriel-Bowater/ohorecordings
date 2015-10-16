@@ -47,4 +47,6 @@ Rails.application.configure do
     }
   }
 
+  config.apphost = 'http://www.ngrok[numbers!].com/'
+
 end
