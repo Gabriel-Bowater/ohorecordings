@@ -53,7 +53,7 @@ class OrdersController < ApplicationController
 
  def paypal_url(order_total, id, user)
     values = {
-        business: "gd.bowater@gmail.com",
+        business: "davebow@netaccess.co.nz",
         cmd: "_xclick",
         return: "#{Rails.configuration.app_host}users/#{@user.id}",
         invoice: "#{SecureRandom.hex(2)}#{id}",
