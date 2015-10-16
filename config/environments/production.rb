@@ -89,6 +89,6 @@ Rails.application.configure do
 
   config.secret_key_base = ENV["SECRET_KEY_BASE"]
 
-  config.apphost = 'http://www.ohorecordings.com/'
+  config.app_host = 'http://www.ohorecordings.com/'
 
 end

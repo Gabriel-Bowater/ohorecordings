@@ -47,13 +47,13 @@ class OrdersController < ApplicationController
 	def update
 
 		order = Order.find(params[:id])
-		# redirect_to paypal_url(params[:order_total], params[:id], order.user)
-		render text: params
+		redirect_to paypal_url(params[:order_total], params[:id], order.user)
+		# render text: params
 	end
 
  def paypal_url(order_total, id, user)
     values = {
-        business: "gd.bowater-facilitator@gmail.com",
+        business: "gd.bowater@gmail.com",
         cmd: "_xclick",
         return: "#{Rails.configuration.app_host}users/#{@user.id}",
         invoice: "#{SecureRandom.hex(2)}#{id}",
@@ -64,8 +64,8 @@ class OrdersController < ApplicationController
         rm: 0,
         notify_url: "#{Rails.configuration.app_host}/hook"
     }
-    # "paypal.com/cgi-bin/webscr?" + values.to_query
-    render text: values
+    "paypal.com/cgi-bin/webscr?" + values.to_query
+    # render text: values
   end
 
   def hook
