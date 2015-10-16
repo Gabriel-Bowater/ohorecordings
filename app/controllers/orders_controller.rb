@@ -64,7 +64,7 @@ class OrdersController < ApplicationController
         rm: 0,
         notify_url: "#{Rails.configuration.app_host}/hook"
     }
-    "https://www.paypal.com" + values.to_query
+    "paypal.com/cgi-bin/webscr?" + values.to_query
   end
 
   def hook
