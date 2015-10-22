@@ -39,6 +39,7 @@ class OrdersController < ApplicationController
 
 		if @admins.include?(@user.email)
 			@paid_orders = Order.where(status: "Completed").order(:completed_at)
+			Order.collect_trash
 		else
 			order = Order.where(user_id: session[:user_id], completed: false)[0]
 			@order_total = 0.0
