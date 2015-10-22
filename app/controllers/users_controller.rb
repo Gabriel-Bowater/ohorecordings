@@ -75,7 +75,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    if  User.where(email: params[:email]).length == 0#Comment out for ngrok testing verify_recaptcha &&
+    if  verify_recaptcha && User.where(email: params[:email]).length == 0#Comment out for ngrok testing verify_recaptcha &&
       @user = User.new(email: params[:email].downcase,
                         given_name: params[:given_name],
                         family_name: params[:family_name],
