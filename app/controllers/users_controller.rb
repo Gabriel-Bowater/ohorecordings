@@ -99,6 +99,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.confirm_code == params[:code]
       @user.email_confirmed = true
+      flash[:alert] = "Email #{@user.email} confirmed. Thank you. You are now logged in."
+      session[:user_id] = @user.id
+    else
+      flash[:alert] = "Invalid email confirmation code."
     end
     redirect_to "/"
   end

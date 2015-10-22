@@ -7,6 +7,6 @@ class AppMailer < ActionMailer::Base
     @confirm_code = SecureRandom.hex
     user.update(confirm_code: @confirm_code)
     @link = "www.ohorecordings.com/users/#{@user.id}/confirm/#{@confirm_code}"
-    mail(to: @user.email_address, subject: "Welcome!")
+    mail(to: @user.email, subject: "Welcome!")
   end
 end
