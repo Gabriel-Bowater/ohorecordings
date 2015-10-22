@@ -8,6 +8,9 @@
     <h1>Welcome! <%= @user.given_name %> <%= @user.family_name %>, </h1>
     <p>Please follow the link below to confirm your email.</p>
     <a href="<%= @link %>">Link!</a>
+    <p>If clicking the above link doesn't lead back to our site, perhaps due to mail client configuration,<br> 
+    please copy and paste the following URL into your browser's address bar: </p>
+    <p><%= @link %></p>
     <p>Thanks for signing up with OHO Recordings!</p>
   </body>
 </html>
