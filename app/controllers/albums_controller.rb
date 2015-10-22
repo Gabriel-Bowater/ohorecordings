@@ -20,8 +20,12 @@ class AlbumsController < ApplicationController
 
 	def destroy
 		@album = Album.find(params[:id])
+		@tracks = Track.where(album_id: @album.id)
 		@album.destroy
-		flash.notice = "Album #{@album.name} deleted. "
+		@tracks.each do |track|
+			track.destroy
+		end
+		flash.notice = "Album #{@album.name} deleted. All tracks associated with this album have also been deleted."
 		redirect_to "/"
 	end
 
