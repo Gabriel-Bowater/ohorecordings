@@ -13,6 +13,8 @@ class Album < ActiveRecord::Base
   validates_attachment_file_name :ogg, :matches => [/rar\Z/, /zip\Z/]
   has_attached_file :flac, :storage => :s3
   validates_attachment_file_name :flac, :matches => [/rar\Z/, /zip\Z/]
+  has_attached_file :wav, :storage => :s3
+  validates_attachment_file_name :wav, :matches => [/rar\Z/, /zip\Z/]
 
 
  def in_cart(user_id)

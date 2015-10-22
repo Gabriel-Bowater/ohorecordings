@@ -1,11 +1,11 @@
 <div class="library-div">
 <h3>Your library</h3>
-<p>User = <%=@user.email%></p>
+<p>User = <%= @user.email %></p>
 
 <h2><u>Your Albums</u><h2>
-<%if @user_albums.length > 0%>
-	<%@user_albums.each do |album|%>
-		<h2><%=album.name%></h2>
+<%  if @user_albums.length > 0 %>
+	<% @user_albums.each do |album| %>
+		<h3 style="text-align:left"><%=album.name%></h3>
 		<p class="generate-album-link"><a href="" >Generate Download Link</a></p>
 		<div class="album-link-box">
 			<h2>Available download formats</h2>
@@ -58,7 +58,17 @@
 		      </div>
 		    	<label><%= filesize(album.flac_file_size) %></label>
 		    </form>
-			<% end %>											
+			<% end %>
+			<% if album.wav_file_name %>
+		    <form  name='generate_wav' action='/users/<%= @user.id %>' class="generate-form" >
+		      <div>
+		          <input type='hidden' name='wav_album_id' value=<%=album.id%>>
+		          <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+		          <input type="image" name="wav_img" src="/images/wav.png" border="0" alt="Submit" class="generate-download-btn"/>
+		      </div>
+		    	<label><%= filesize(album.wav_file_size) %></label>
+		    </form>
+			<% end %>												
 		</div>
 	<%end%>
 <%else%>

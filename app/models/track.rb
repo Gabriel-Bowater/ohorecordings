@@ -13,6 +13,10 @@ class Track < ActiveRecord::Base
   validates_attachment_file_name :ogg, :matches => [/ogg\Z/]
   has_attached_file :flac, :storage => :s3
   validates_attachment_file_name :flac, :matches => [/flac\Z/]
+  has_attached_file :wav, :storage => :s3
+  validates_attachment_file_name :wav, :matches => [/wav\Z/]
+  has_attached_file :sample, :storage => :s3
+  validates_attachment_file_name :sample, :matches => [/mp3\Z/]
 
 
   def in_cart(user_id)

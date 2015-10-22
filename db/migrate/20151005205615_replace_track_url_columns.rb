@@ -8,11 +8,11 @@ class ReplaceTrackUrlColumns < ActiveRecord::Migration
   	add_attachment :tracks, :flac
   	add_attachment :tracks, :sample
 
-  	remove_column :tracks, :mp3_url
-  	remove_column :tracks, :alac_url
-  	remove_column :tracks, :aac_url
-  	remove_column :tracks, :ogg_url
-  	remove_column :tracks, :flac_url
+  	remove_column :tracks, :mp3_url, 
+  	remove_column :tracks, :alac_url, 
+  	remove_column :tracks, :aac_url, 
+  	remove_column :tracks, :ogg_url, 
+  	remove_column :tracks, :flac_url, 
 
 	end
 
@@ -24,10 +24,10 @@ class ReplaceTrackUrlColumns < ActiveRecord::Migration
   	remove_attachment :tracks, :flac
   	remove_attachment :tracks, :sample
 
-  	add_column :tracks, :mp3_url
-  	add_column :tracks, :alac_url
-  	add_column :tracks, :aac_url
-  	add_column :tracks, :ogg_url
-  	add_column :tracks, :flac_url
+  	add_column :tracks, :mp3_url, :string
+  	add_column :tracks, :alac_url, :string
+  	add_column :tracks, :aac_url, :string
+  	add_column :tracks, :ogg_url, :string
+  	add_column :tracks, :flac_url, :string
 	end
 end

@@ -1,34 +1,50 @@
+<% if @user && !@admins.include?(@user.email) %>
+	<div id="album-show-main" class="orders-div">
+		<h3 class="catalog-head">Albums in cart -</h3>
+		<% if @user_album_orders%>
+			<% @user_album_orders.each do |album| %>
+				<p><%= album.album.name + "......" + number_to_currency(album.price) %></p> 
+				<%= link_to image_tag("/images/trashcan.png", :border=>0, :class => 'trashcan'),  "/album_orders/#{album.id}",  method: :delete, data: { confirm: 'Remove item from cart?' } %>
+				<br>
+			<% end %>
+		<%end%>
+		<br>
 
-<div id="album-show-main" class="orders-div">
-	<h3 class="catalog-head">Albums in cart -</h3>
-	<% if @user_album_orders%>
-		<% @user_album_orders.each do |album| %>
-			<p><%= album.album.name + "......" + number_to_currency(album.price) %></p> 
-			<%= link_to image_tag("/images/trashcan.png", :border=>0, :class => 'trashcan'),  "/album_orders/#{album.id}",  method: :delete, data: { confirm: 'Remove item from cart?' } %>
-			<br>
+
+		<h3 class="catalog-head">Tracks in cart -</h3>
+		<% if @user_track_orders%>
+			<% @user_track_orders.each do |track| %>
+				<p><%= track.track.name + "......" + number_to_currency(track.price) %></p>
+				<%= link_to image_tag("/images/trashcan.png", :border=>0, :class => 'trashcan'),  "/track_orders/#{track.id}",  method: :delete, data: { confirm: 'Remove item from cart?' } %>
+			<% end %>
 		<% end %>
-	<%end%>
-	<br>
 
+		<h3 class="catalog-head">Total: <u><%= number_to_currency(@order_total)%></u></h3>
 
-	<h3 class="catalog-head">Tracks in cart -</h3>
-	<% if @user_track_orders%>
-		<% @user_track_orders.each do |track| %>
-			<p><%= track.track.name + "......" + number_to_currency(track.price) %></p>
-			<%= link_to image_tag("/images/trashcan.png", :border=>0, :class => 'trashcan'),  "/track_orders/#{track.id}",  method: :delete, data: { confirm: 'Remove item from cart?' } %>
+		<% if @order_total != 0 %>
+			<h3 class="catalog-head"> Checkout with Paypal </h3>
+
+			<%= form_tag("/orders/#{@order.id}", method: "put") do |f| %>
+				<%= hidden_field_tag("order_total", @order_total) %>
+	    	<%= image_submit_tag("/images/paypal.png", class: "paypal") %>
+	    <% end %>
+
+		<%end%>
+		<a href="/"><h2 class="catalog-head submit-btn" style="margin:auto;max-width:30%;color:white;text-align:center"> Continue Shopping </h2></a>
+	</div>
+<% elsif @user && @admins.include?(@user.email) %>
+
+	<% @paid_orders.each do |order| %>
+		<p> Order from <%= order.user.email %> paid <%= order.completed_at %></p>
+		<p>Albums:</p>
+		<% order.album_orders.each do |album_order| %>
+			<p><%= album_order.album.name %> by  <%= album_order.album.artists %>. Amount paid: <%= number_to_currency(album_order.price) %></p>
 		<% end %>
+		<p>Tracks:</p>
+		<% order.track_orders.each do |track_order| %>
+			<p><%= track_order.track.name %> by  <%= track_order.track.artists %>. Amount paid: <%= number_to_currency(track_order.price) %></p>
+		<% end %>
+		<p>Total : <%= number_to_currency(order.amount_paid) %></p>
 	<% end %>
 
-	<h3 class="catalog-head">Total: <u><%= number_to_currency(@order_total)%></u></h3>
-
-	<% if @order_total != 0 %>
-		<h3 class="catalog-head"> Checkout with Paypal </h3>
-
-		<%= form_tag("/orders/#{@order.id}", method: "put") do |f| %>
-			<%= hidden_field_tag("order_total", @order_total) %>
-    	<%= image_submit_tag("/images/paypal.png", class: "paypal") %>
-    <% end %>
-
-	<%end%>
-	<a href="/"><h2 class="catalog-head submit-btn" style="margin:auto;max-width:30%;color:white;text-align:center"> Continue Shopping </h2></a>
-</div>
+<% end %>

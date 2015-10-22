@@ -49,9 +49,9 @@
           </form>
         <%end%>
 
-        <%if track.sample_url%>
-          <a href=<%=track.sample_url%> target="_blank"> <img src="/images/dummyplay.png" class='play-button'></a> 
-
+        <%if track.sample%>
+          <a href="<%= track.sample.s3_object.url_for(:read, :secure => true, :expires => 20.minutes.from_now) %>" target="_blank"> <img src="/images/dummyplay.png" class='play-button'></a> 
+        
         <%else%>
           <input type="image" src="/images/dummyplay.png" onclick="noSample()" class='play-button'>
         <%end%>

@@ -11,6 +11,7 @@ class AlbumsController < ApplicationController
   	@formats << "m4a" if @album.alac_file_name
   	@formats << "aac" if @album.aac_file_name
   	@formats << "flac" if @album.flac_file_name
+  	@formats << "wav" if @album.wav_file_name
   end
 
 	def new
@@ -41,7 +42,7 @@ class AlbumsController < ApplicationController
 	def album_params
     params.require(:album).permit(:name, :art_url, :year, 
     														:description, :artists, :isrc, 
-    														:price, :mp3, :alac, 
+    														:price, :mp3, :alac, :wav,
     														:aac, :ogg, :flac)
   end
 	

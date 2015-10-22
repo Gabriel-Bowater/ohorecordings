@@ -40,7 +40,7 @@ class TracksController < ApplicationController
 	def track_params
     params.require(:track).permit(:name, :album_id, :track_number,
     							 :price, :track_isrc, :mp3, :alac, 
-    							 :aac, :ogg, :flac, 
+    							 :aac, :ogg, :flac, :wav, 
     							 :sample, :sample_url)
   end
 	

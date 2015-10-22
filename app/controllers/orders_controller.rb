@@ -33,15 +33,23 @@ class OrdersController < ApplicationController
 	end
 
 	def index
-		order = Order.where(user_id: session[:user_id], completed: false)[0]
-		@order_total = 0.0
-		if order
-			@user_album_orders = AlbumOrder.where(order_id: order.id)
-			@user_track_orders = TrackOrder.where(order_id: order.id)
-			@user_album_orders.each { |album| @order_total += Album.find(album.album_id).price} 
-			@user_track_orders.each { |track| @order_total += Track.find(track.track_id).price} 
+		if !@user
+			redirect_to "/"
 		end
-		@order = order
+
+		if @admins.include?(@user.email)
+			@paid_orders = Order.where(status: "Completed").order(:completed_at)
+		else
+			order = Order.where(user_id: session[:user_id], completed: false)[0]
+			@order_total = 0.0
+			if order
+				@user_album_orders = AlbumOrder.where(order_id: order.id)
+				@user_track_orders = TrackOrder.where(order_id: order.id)
+				@user_album_orders.each { |album| @order_total += Album.find(album.album_id).price} 
+				@user_track_orders.each { |track| @order_total += Track.find(track.track_id).price} 
+			end
+			@order = order
+		end
 	end
 
 	def update

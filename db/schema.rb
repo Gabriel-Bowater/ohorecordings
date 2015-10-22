@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151005205615) do
+ActiveRecord::Schema.define(version: 20151022013138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,10 @@ ActiveRecord::Schema.define(version: 20151005205615) do
     t.string   "flac_content_type"
     t.integer  "flac_file_size"
     t.datetime "flac_updated_at"
+    t.string   "wav_file_name"
+    t.string   "wav_content_type"
+    t.integer  "wav_file_size"
+    t.datetime "wav_updated_at"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -93,7 +97,6 @@ ActiveRecord::Schema.define(version: 20151005205615) do
     t.integer  "album_id"
     t.string   "name",                              null: false
     t.integer  "track_number"
-    t.string   "sample_url"
     t.decimal  "price",               default: 2.0, null: false
     t.string   "track_isrc"
     t.datetime "created_at",                        null: false
@@ -122,6 +125,10 @@ ActiveRecord::Schema.define(version: 20151005205615) do
     t.string   "sample_content_type"
     t.integer  "sample_file_size"
     t.datetime "sample_updated_at"
+    t.string   "wav_file_name"
+    t.string   "wav_content_type"
+    t.integer  "wav_file_size"
+    t.datetime "wav_updated_at"
   end
 
   create_table "users", force: :cascade do |t|

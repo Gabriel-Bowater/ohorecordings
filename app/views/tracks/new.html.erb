@@ -12,8 +12,6 @@
 	  	<%= f.text_field :name, required: true%><br>
 	  	<%= f.label :track_number, "Track Number - Leave blank to autonumber" %><br>
 	  	<%= f.number_field :track_number, step: "1"%><br>	  
-	  	<%= f.label :sample_url, "Sample URL"%><br>
-	  	<%= f.text_field :sample_url%><br>
 	  	<%= f.label "The following files should be unarchived straight files"%><br>
 	  	<%= f.label :mp3, "MP3 File" %><br>
 	  	<%= f.file_field :mp3 %> <br>
@@ -25,8 +23,10 @@
 	  	<%= f.file_field :ogg %> <br>
 	  	<%= f.label :flac, "FLAC File" %><br>
 	  	<%= f.file_field :flac %> <br>
-	  	<%= f.label :sample, "Sample File" %><br>
-	  	<%= f.file_field :flac %> <br>
+	  	<%= f.label :wav, "Wav File" %><br>
+	  	<%= f.file_field :wav %> <br>
+	  	<%= f.label :sample, "Sample File. MP3 format please" %><br>
+	  	<%= f.file_field :sample %> <br>
 	  	<%= f.label :price, "Price - Leave blank for default pricing" %><br>
 	  	<%= f.number_field :price, step: "0.01", required: true%><br>	
 	  	<%= f.submit class: "btn-md btn-warning submit-btn" %>
