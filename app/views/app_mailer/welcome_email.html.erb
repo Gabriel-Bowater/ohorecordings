@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+  	<img src="http://www.ohorecordings.com/images/logo_big_h.png" style="max-width:25%">
+    <h1>Welcome! <%= @user.given_name %> <%= @user.family_name %>, </h1>
+    <p>Please follow the link below to confirm your email.</p>
+    <a href="<%= @link %>">Link!</a>
+    <p>Thanks for signing up with OHO Recordings!</p>
+  </body>
+</html>

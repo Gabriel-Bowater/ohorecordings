@@ -86,12 +86,21 @@ class UsersController < ApplicationController
                         email_confirmed: true) #for testing
       @user.password = params[:password]
       @user.save!
+      AppMailer.welcome_email(@user)
       flash[:alert] = "User profile created. Please check your email inbox for an email confirmation message."
       redirect_to '/'
     else #Comment out for ngrok testing
       flash[:alert] = "Existential crisis detected. Pleace click the reCaptcha tick box to establish your reality."
       redirect_to new_user_path
     end #Comment out for ngrok testing
+  end
+
+  def confirm
+    @user = User.find(params[:id])
+    if @user.confirm_code == params[:code]
+      @user.email_confirmed = true
+    end
+    redirect_to "/"
   end
 
   private

@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   get '/orders/:id', to: 'orders#new'
 
+  get '/users/:id/confirm/:code', to: 'users#confirm'
+
   get '/application/about' => 'application#about'
 
   post "/hook" => "orders#hook"
