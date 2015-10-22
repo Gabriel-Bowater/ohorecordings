@@ -75,7 +75,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    if verify_recaptcha && User.where(email: params[:email]).length == 0#Comment out for ngrok testing
+    if  User.where(email: params[:email]).length == 0#Comment out for ngrok testing verify_recaptcha &&
       @user = User.new(email: params[:email].downcase,
                         given_name: params[:given_name],
                         family_name: params[:family_name],
@@ -88,10 +88,10 @@ class UsersController < ApplicationController
       @user.save!
       AppMailer.welcome_email(@user).deliver_now
       flash[:alert] = "User profile created. Please check your email inbox for an email confirmation message."
-      redirect_to users_new_path
+      redirect_to '/'
     elsif User.where(email: params[:email]).length > 0
       flash[:alert] = "User profile with email #{params[:email]} already exists. Please log in."
-      redirect_to '/'
+      redirect_to new_user_path
     else #Comment out for ngrok testing
       flash[:alert] = "Existential crisis detected. Pleace click the reCaptcha tick box to establish your reality."
       redirect_to new_user_path
