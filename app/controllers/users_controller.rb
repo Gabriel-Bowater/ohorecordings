@@ -83,10 +83,10 @@ class UsersController < ApplicationController
                         address_two: params[:address_two],
                         address_city: params[:address_city],
                         address_country: params[:address_country],
-                        email_confirmed: true) #for testing
+                        email_confirmed: false)
       @user.password = params[:password]
       @user.save!
-      AppMailer.welcome_email(@user)
+      AppMailer.welcome_email(@user).deliver_now
       flash[:alert] = "User profile created. Please check your email inbox for an email confirmation message."
       redirect_to '/'
     else #Comment out for ngrok testing
