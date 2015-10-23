@@ -14,7 +14,7 @@ class AppMailer < ActionMailer::Base
   	@user = user
   	@confirm_code = SecureRandom.hex
   	user.update(confirm_code: @confirm_code)
-  	@link = "www.ohorecordings/users/#{@user.id}/reset/#{@confirm_code}"
+  	@link = "www.ohorecordings.com/users/#{@user.id}/reset/#{@confirm_code}"
   	mail(to: @user.email, subject: "Password reset.")
   end
 end
