@@ -18,6 +18,15 @@ Rails.application.routes.draw do
 
   get '/application/about' => 'application#about'
 
+  #password reset process
+  get '/recover', to: 'users#recover'
+
+  post '/users/reset', to: 'users#reset'
+
+  get '/users/:id/reset/:code', to: 'users#change_password'
+
+  post '/users/change_password', to: 'users#new_password'
+  # paypal response
   post "/hook" => "orders#hook"
 
   # The priority is based upon order of creation: first created -> highest priority.

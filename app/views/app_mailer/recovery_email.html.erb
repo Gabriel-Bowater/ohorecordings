@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+  	<img src="http://www.ohorecordings.com/images/logo_big_h.png" style="max-width:25%">
+    <h1>Howdy! <%= @user.given_name %> <%= @user.family_name %>, </h1>
+    <p>We recieved a password reset request for you account. If you did not make this request it is <br>
+    safe to ignore this message. If you did make the request follow the link below:</p>
+    <a href="<%= @link %>">Link!</a>
+    <p>If clicking the above link doesn't lead back to our site, perhaps due to mail client configuration,<br> 
+    please copy and paste the following URL into your browser's address bar: </p>
+    <p><%= @link %></p>
+    <p>Thanks for using OHO Recordings!</p>
+  </body>
+</html>

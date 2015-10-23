@@ -13,6 +13,7 @@
 
 
         </form>
+        <p><a href="/recover">Forgotten password? Click here.</a></p>
     </div>
     <div class="col-md-6 portfolio-item log-in-form">
         <h3>
@@ -40,7 +41,7 @@
           <input type='password' name="confirm_password" required><br>
 
 
-          <br><%= recaptcha_tags %>  </br>
+          <br><%= recaptcha_tags  %>  </br>
           <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
           <input type='submit' class='btn-md btn-warning submit-btn'>
 

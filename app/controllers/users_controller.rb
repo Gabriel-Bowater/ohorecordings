@@ -102,12 +102,49 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.confirm_code == params[:code]
       @user.email_confirmed = true
+      @user.update(confirm_code: SecureRandom.hex)
       flash[:alert] = "Email #{@user.email} confirmed. Thank you. You are now logged in."
       session[:user_id] = @user.id
     else
       flash[:alert] = "Invalid email confirmation code."
     end
     redirect_to "/"
+  end
+
+  def recover
+  end
+
+  def reset
+    if verify_recaptcha && User.find_by(email: params[:email])
+      AppMailer.welcome_email(User.find_by(email: params[:email])).deliver_now
+      flash[:alert] = "Email sent. Check your inbox."
+    elsif !(verify_recaptcha)
+      flash[:alert] = "Please click the box in the reCaptcha"
+    else
+      flash[:alert] = "Email address not found."
+    end
+    redirect_to "/"
+  end
+
+  def change_password
+    @user = User.find(params[:id])
+    if !(@user.confirm_code == params[:code])
+      redirect_to '/'
+    end
+  end
+
+  def new_password
+    
+    user = User.find(params[:user_id])
+    if params[:password] == params[:password_confirm]
+      flash[:alert] = "Password reset. Please log in."
+      user.password = params[:password]
+      user.update(confirm_code: SecureRandom.hex)
+      redirect_to "/"
+    else
+      flash[:alert] = "Please make sure your passwords match."
+      redirect_to(:back)
+    end      
   end
 
   private
