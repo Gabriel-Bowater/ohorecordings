@@ -116,7 +116,7 @@ class UsersController < ApplicationController
 
   def reset
     if verify_recaptcha && User.find_by(email: params[:email])
-      AppMailer.welcome_email(User.find_by(email: params[:email])).deliver_now
+      AppMailer.recovery_email(User.find_by(email: params[:email])).deliver_now
       flash[:alert] = "Email sent. Check your inbox."
     elsif !(verify_recaptcha)
       flash[:alert] = "Please click the box in the reCaptcha"
