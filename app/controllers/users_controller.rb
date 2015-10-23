@@ -128,8 +128,9 @@ class UsersController < ApplicationController
 
   def change_password
     @user = User.find(params[:id])
-    if !(@user.confirm_code == params[:code])
+    if @user.confirm_code == params[:code]
       @user.update(email_confirmed: true)
+    else
       redirect_to '/'
     end
   end
