@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
         session[:user_id] = nil
       end
   	end
-    @admins = ["gd.bowater@gmail.com", "davebow@netaccess.co.nz"]
+    @admins = ["gd.bowater@gmail.com", "davebow@netaccess.co.nz", "bowaterd@snap.net.nz"]
   end
 
   def user_cart_count

@@ -2,11 +2,11 @@
 <h3>Your library</h3>
 <p>User = <%= @user.email %></p>
 
-<h2><u>Your Albums</u><h2>
+<h2><u>Your Albums</u></h2>
 <%  if @user_albums.length > 0 %>
 	<% @user_albums.each do |album| %>
 		<h3 style="text-align:left"><%=album.name%></h3>
-		<p class="generate-album-link"><a href="" >Generate Download Link</a></p>
+		<p class="generate-album-link"><a href="" class="submit-btn" >Generate Download Link</a></p>
 		<div class="album-link-box">
 			<h2>Available download formats</h2>
 			<% if album.mp3_file_name %>
@@ -44,7 +44,7 @@
 		      <div>
 		          <input type='hidden' name='alac_album_id' value=<%=album.id%>>
 		          <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-		          <input type="image" name="alac_img" src="/images/m4a.png" border="0" alt="Submit" class="generate-download-btn"/>
+		          <input type="image" name="alac_img" src="/images/alac.png" border="0" alt="Submit" class="generate-download-btn"/>
 		      </div>
 		    	<label><%= filesize(album.alac_file_size) %></label>
 		    </form>
@@ -75,11 +75,11 @@
 	<p>No albums yet. Take a look at our <a href="/">catalog</a>.</p>
 <%end%>
 
-<h2><u>Your Tracks</u><h2>
+<h2><u>Your Tracks</u></h2>
 <%if @user_tracks.length > 0%>
 	<%@user_tracks.each do |track|%>
 		<h2><%=track.name%></h2>
-		<p class="generate-track-link"><a href="">Generate Download Link</a></p>
+		<p class="generate-track-link"><a href="" class="submit-btn">Generate Download Link</a></p>
 		<div class="track-link-box">
 			<h2>Available download formats</h2>
 			<% if track.mp3_file_name %>
@@ -117,7 +117,7 @@
 		      <div>
 		          <input type='hidden' name='alac_track_id' value=<%=track.id%>>
 		          <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-		          <input type="image" name="alac_img" src="/images/m4a.png" border="0" alt="Submit" class="generate-download-btn"/>
+		          <input type="image" name="alac_img" src="/images/alac.png" border="0" alt="Submit" class="generate-download-btn"/>
 		      </div>
 		    	<label><%= filesize(track.alac_file_size) %></label>
 		    </form>
@@ -137,4 +137,24 @@
 <%else%>
 	<p>No individual tracks in your library yet.</p>
 <%end%>
+	<div class="spacer"></div>
+	<div ="User-address">
+		<form action="/users/<%= @user.id %>" method="post">
+			<h3>Account Details</h3>
+			<p class="edit-labels">Email: <%= @user.email %></p>
+			<p class="edit-labels">Given Name: <%= @user.given_name %> <input type="text" name="given_name" class="edit-address-form"></p>
+			<p class="edit-labels">Family Name: <%= @user.family_name %> <input type="text" name="family_name" class="edit-address-form"></p>
+			<p class="edit-labels">Address - Line 1: <%= @user.address_one%> <input type="text" name="address_one" class="edit-address-form"></p>
+			<p class="edit-labels">Address - Line 2: <%= @user.address_two%> <input type="text" name="address_two" class="edit-address-form"></p>
+			<p class="edit-labels">Address - City: <%= @user.address_city%> <input type="text" name="address_city" class="edit-address-form"></p>
+			<p class="edit-labels">Address - Country: <%= @user.address_country%><%= select_tag "address_country", options_for_select(@countries), class: "edit-address-form", style: "margin-right:10%;" %></p>
+			<br><button id="edit-button" >Edit Details</button>
+			
+
+			<input type="submit" value="Submit Changes" class="edit-address-form">
+			<%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+			<input type="hidden" name="_method" value="patch">
+			<p class="edit-address-form" style="font-size:1em;">Leave blank any details you want unchanged.  Note - Email may not be changed on exisiting accounts</p>
+		</form>
+	</div>
 </div>

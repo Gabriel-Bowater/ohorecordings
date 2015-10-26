@@ -63,6 +63,8 @@ class UsersController < ApplicationController
       end
 
       # @user = User.find(session[:user_id]) #User.find(session[:user_id])
+      @countries = countries
+      @countries.unshift("")
       @user_albums = []
       @user_tracks = []
       AlbumRight.where(user_id: @user.id).each do |right|
@@ -147,6 +149,29 @@ class UsersController < ApplicationController
       flash[:alert] = "Please make sure your passwords match."
       redirect_to(:back)
     end      
+  end
+
+  def update
+    if !params[:given_name].blank?
+      @user.update(given_name: params[:given_name])
+    end
+    if !params[:family_name].blank?
+      @user.update(family_name: params[:family_name])
+    end
+    if !params[:address_one].blank?
+      @user.update(address_one: params[:address_one])
+    end
+    if !params[:address_two].blank?
+      @user.update(address_two: params[:address_two])
+    end
+    if !params[:address_city].blank?
+      @user.update(address_city: params[:address_city])
+    end
+    if !params[:given_name].blank?
+      @user.update(given_name: params[:given_name])
+    end
+
+    redirect_to user_path
   end
 
   private

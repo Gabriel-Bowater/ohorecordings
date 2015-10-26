@@ -26,10 +26,10 @@ body {
 
 body {
   color: #000;
-  font-size: 1.7em
+  font-size: 1.25em
 }
 
-a {
+a, a:hover, a:active, a:visited, a:focus { 
   text-decoration:none;
   color:black;
 }
@@ -69,7 +69,7 @@ a:hover {
 
 h3 {
   margin: 0 10% 0 10%;
-  font-size: 1.4em;
+  font-size: 2em;
   text-align: center;
 }
 
@@ -170,6 +170,8 @@ a {
   text-decoration:initial;
 }
 
+
+
 @media screen and (min-width:480px) {
   /***************************
   TWO COLUMN LAYOUT
@@ -213,7 +215,7 @@ a {
   nav {
       background:none;
       float: right;
-      font-size:1.125em;
+      font-size:1.4em;
       padding-right:5%;
       text-align:right;
       width:38%;
@@ -245,16 +247,23 @@ a {
   h1 {
     font-size:2.5em;
   }
+
   h2 {
-    font-size:0.825em;
+    font-size:1.25  em;
     margin-bottom:12px;
   }
+
   header {
     border-bottom:5px solid black;
     /*#57A8E0 #105B63*/
     margin-bottom: 60px;
     /*#FF111A*/
   }
+  p {
+
+  font-size: 1.6em;
+  }
+
 }
 /*******************************
 FRONT PAGE
@@ -280,6 +289,7 @@ FRONT PAGE
   max-width: 70%;
   margin-left: 15%;
   border: double 5px #092B42;
+  box-shadow: 10px 10px 5px #888888;
 }
 
 .album-price {
@@ -361,7 +371,7 @@ SINGLE ALBUM PAGE
   display: inline;
   margin-top: 20px;
   margin-left: 10%;
-  font-size: 0.92em
+  font-size: 1.4em
 }
 
 .spacer {
@@ -404,11 +414,12 @@ LOGIN SIGNUP PAGE
 }
 
 .submit-btn {
-  margin-top: 12px;
-  margin-left: 8px;
+  margin: 15px;
   background: #BE463E;
   color: black;
   border: double 5px rgba(204,204,170,0.85);
+  font-size: 15px;
+  padding: 3px;
 }
 
 .submit-btn:hover {
@@ -419,6 +430,11 @@ LOGIN SIGNUP PAGE
 /********************************
 USER LIBRARY PAGE
 ********************************/
+
+.alert-danger {
+  font-size: 1.5em;
+  background: white;
+}
 
 .library-div {
   background: rgba(204,204,170,0.85);
@@ -434,7 +450,7 @@ USER LIBRARY PAGE
   display: none;
   background: rgb(204,204,170);
   border: solid #888888 1px;
-  box-shadow: 10px 10px 1px #092B42;
+  box-shadow: 10px 10px 5px #888888;
   padding: 10px;
   margin-bottom: 20px;
   max-width:95%;
@@ -470,6 +486,23 @@ USER LIBRARY PAGE
   display: inline-block;
 }
 
+.spacer {
+  height: 80px;
+}
+
+.edit-address-form {
+  display: none;
+  float: right;
+  margin-right: 20%
+}
+
+.edit-labels {
+  height: 30px;
+  padding: 5px;
+  margin-top: 5px;
+  font-size: 1.3em;
+}
+
 /********************************
 SHOPPING CART PAGE
 ********************************/
@@ -478,7 +511,7 @@ SHOPPING CART PAGE
   margin-left: auto;
   margin-right: auto;
   padding: 10px;
-  box-shadow: 10px 10px 1px #092B42;
+  box-shadow: 10px 10px 5px #888888;
 }
 .paypal {
   display: block;
