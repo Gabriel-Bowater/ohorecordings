@@ -543,3 +543,13 @@ LIGHTBOX OVERLAY
 #overlay p {
   color: #888;
 }
+
+/********************************
+USERS INDEX
+********************************/
+#users-index p {
+  font-size: 1em;
+  margin:1%;
+  margin-left: 5%;
+  
+}

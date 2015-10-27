@@ -1,0 +1,20 @@
+<div id="users-index">
+<p>__________________________________________</p>
+<% @users.each do |user| %>
+		<p><%= user.id %>. <%= user.given_name %> <%= user.family_name %></p>
+		<p><%= user.address_one %> <%= user.address_two %></p>
+		<p><%= user.address_city %></p>
+		<p><%= user.address_country %></p>
+		<p><u>User Albums</u></p>
+		<% user.album_rights.each do |album_right| %>
+			<p><%= album_right.album.name %></p>
+		<% end %>
+		<p><u>User Tracks</u></p>
+		<% user.track_rights.each do |track_right| %>
+			<p><%= track_right.track.name %></p>
+		<% end %>	
+		<p>Created at: <%= user.created_at %>. Updated at <%= user.updated_at %></p>
+		<p>__________________________________________</p>
+		<br>
+<% end %>
+</div>

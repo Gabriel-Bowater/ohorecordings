@@ -5,6 +5,14 @@ class UsersController < ApplicationController
     # render text: @countries
   end
 
+  def index
+    if @user && @admins.include?(@user.email)
+      @users = User.all
+    else
+      redirect_to '/'
+    end
+  end
+
   def show
 
     if !@user
