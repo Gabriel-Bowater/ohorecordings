@@ -6,7 +6,7 @@ class Track < ActiveRecord::Base
   has_attached_file :mp3, :storage => :s3
   validates_attachment_file_name :mp3, :matches => [/mp3\Z/]
   has_attached_file :alac, :storage => :s3
-  validates_attachment_file_name :alac, :matches => [/alac\Z/]
+  validates_attachment_file_name :alac, :matches => [/m4a\Z/]
   has_attached_file :aac, :storage => :s3
   validates_attachment_file_name :aac, :matches => [/aac\Z/]
   has_attached_file :ogg, :storage => :s3

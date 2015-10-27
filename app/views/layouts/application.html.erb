@@ -26,6 +26,11 @@
           <li class="navlink"><%= link_to 'Log in/ Sign up', new_user_path, method: :get %></li>
           <li class="navlink"><%= link_to 'Your Library', new_user_path, method: :get %></li>
         <%end%>
+        <%if @user && @admins.include?(@user.email)%>
+          <li class="navlink"><%= link_to 'ADMIN - Add an album', new_album_path, method: :get %></li>
+          <li class="navlink"><%= link_to 'ADMIN - View all orders', orders_path, method: :get %></li>
+          <li class="navlink"><%= link_to 'ADMIN - View all users', users_path, method: :get %></li>
+        <% end %>
       </ul>
     </nav>
     <%if @user%>
