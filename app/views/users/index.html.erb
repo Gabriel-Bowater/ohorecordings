@@ -2,6 +2,7 @@
 <p>__________________________________________</p>
 <% @users.each do |user| %>
 		<p><%= user.id %>. <%= user.given_name %> <%= user.family_name %></p>
+		<p><%= user.email %></p>
 		<p><%= user.address_one %> <%= user.address_two %></p>
 		<p><%= user.address_city %></p>
 		<p><%= user.address_country %></p>
