@@ -48,7 +48,7 @@ class Track < ActiveRecord::Base
   protected
 
   def nil_if_blank
-    null_attrs = ["sample_url", "track_isrc"]
+    null_attrs = ["track_isrc"]
     null_attrs.each { |attr| self[attr] = nil if self[attr].blank? }
   end
 
