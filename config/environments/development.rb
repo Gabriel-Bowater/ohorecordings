@@ -42,8 +42,8 @@ Rails.application.configure do
     :storage => :s3,
     :s3_credentials => {
       :bucket => 'ohorecordings',
-      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+      :access_key_id => Rails.application.secrets.aws_access_key_id,
+      :secret_access_key => Rails.application.secrets.aws_secret_key
     }
   }
 

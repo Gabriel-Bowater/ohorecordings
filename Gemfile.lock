@@ -92,6 +92,7 @@ GEM
       mime-types
       mimemagic (= 0.3.0)
     pg (0.18.3)
+    posix-spawn (0.3.11)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -169,6 +170,7 @@ DEPENDENCIES
   jquery-rails
   paperclip
   pg
+  posix-spawn
   rails (= 4.2.3)
   recaptcha
   sass-rails (~> 5.0)
