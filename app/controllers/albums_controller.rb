@@ -45,6 +45,36 @@ class AlbumsController < ApplicationController
 
 	end
 
+	def update
+		album = Album.find(params[:id])
+		if params[:delete]
+			if params[:delete] == "mp3"
+				album.mp3 = nil
+				album.save
+			end
+			if params[:delete] == "alac"
+				album.alac = nil
+				album.save
+			end		
+			if params[:delete] == "aac"
+				album.aac = nil
+				album.save
+			end				
+			if params[:delete] == "flac"
+				album.flac = nil
+				album.save
+			end			
+			if params[:delete] == "wav"
+				album.wav = nil
+				album.save
+			end			
+		else 
+			album.update( album_params )
+			album.save
+		end
+		redirect_to "/albums/#{params[:id]}"
+	end
+
 	private 
 
 	def album_params

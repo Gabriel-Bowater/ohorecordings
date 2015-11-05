@@ -18,7 +18,7 @@
   <%end%>
   <div class="spacer"></div>
   <p class="album-price"><%=number_to_currency(@album.price)%></p>
-  <p class="album-desc"><%=@album.description%></p>
+  <pre class="album-desc"><%=@album.description%></pre>
   <p class="album-desc">By <%=@album.artists%></p>
   <p class="album-desc">Released <%=@album.year%></p>
   <p class="album-desc">Available Formats: 
@@ -61,6 +61,47 @@
     <p>Samples served in mp3 format. All prices in New Zealand dollars.</p>
   </div>
 </div>
+
+<% if @user && @admins.include?(@user.email) %>
+  <div id="album-edit">
+    <h2>Current file formats:</h2>
+    <% @formats.each do |format| %>
+      <p><%= format %> 
+        <form method="post" action="/albums/<%= @album.id %>">
+          <input type="submit" value="Delete Archive">
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+          <input type="hidden" name="_method" value="patch">
+          <input type="hidden" name="delete" value="<%= format %>">
+        </form>
+      </p>
+    <% end %>
+    <h2>Add formats:</h2>
+    <%= form_for @album, url: {action: "update"}, html: {class: "new-item-form", multipart: true} do |f|%>
+      <% if (["mp3", "m4a", "aac", "flac", "wav"] - @formats).include?("mp3") %>
+        <%= f.label :mp3, "MP3 Archive" %><br>
+        <%= f.file_field :mp3 %> <br>
+      <% end %>
+      <% if (["mp3", "m4a", "aac", "flac", "wav"] - @formats).include?("m4a") %>
+        <%= f.label :m4a, "M4A Archive" %><br>
+        <%= f.file_field :m4a %> <br>
+      <% end %>
+      <% if (["mp3", "m4a", "aac", "flac", "wav"] - @formats).include?("aac") %>
+        <%= f.label :aac, "AAC Archive" %><br>
+        <%= f.file_field :aac %> <br>
+      <% end %>
+      <% if (["mp3", "m4a", "aac", "flac", "wav"] - @formats).include?("flac") %>
+        <%= f.label :flac, "FLAC Archive" %><br>
+        <%= f.file_field :flac %> <br>
+      <% end %>
+      <% if (["mp3", "m4a", "aac", "flac", "wav"] - @formats).include?("wav") %>
+        <%= f.label :wav, "WAV Archive" %><br>
+        <%= f.file_field :wav %> <br>
+      <% end %>
+      <%= f.submit class: "btn-md btn-warning submit-btn" %>
+    <% end %>
+  </div>
+<% end %>
+
 <script>
 function noSample(){
   alert("No sample available, sorry.");
