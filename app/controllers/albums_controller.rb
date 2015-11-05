@@ -8,7 +8,7 @@ class AlbumsController < ApplicationController
   	@formats = Array.new
   	@formats << "mp3" if @album.mp3_file_name
   	@formats << "ogg" if @album.ogg_file_name
-  	@formats << "m4a" if @album.alac_file_name
+  	@formats << "alac" if @album.alac_file_name
   	@formats << "aac" if @album.aac_file_name
   	@formats << "flac" if @album.flac_file_name
   	@formats << "wav" if @album.wav_file_name
