@@ -76,10 +76,32 @@
       </p>
     <% end %>
     <h2>Add formats:</h2>
+
+
+    <%= s3_uploader_form  callback_url: albums_url, callback_param: "album[mp3_url]", id: "s3-uploader", max_file_size: 2000.megabytes do %>
+        <%= label_tag :mp3 %>
+        <%= file_field_tag :file, multiple: true %>
+        <input type="hidden" name="Content-type" id="Content-type" value="">
+        <%= submit_tag %>
+    <% end %>
+
+    <div id="uploads_container"></div>
+      <script id="template-upload" type="text/x-tmpl">
+      <div id="upload_{%=o.unique_id%}" class="upload">
+        <h5>{%=o.name%}</h5>
+        <div class="progress progress-striped active"><div class="bar" style="width: 0%"></div></div>
+      </div>
+    </script>
+
+
     <%= form_for @album, url: {action: "update"}, html: {class: "new-item-form", multipart: true} do |f|%>
       <% if (["mp3", "alac", "aac", "flac", "wav"] - @formats).include?("mp3") %>
         <%= f.label :mp3, "MP3 Archive" %><br>
         <%= f.file_field :mp3 %> <br>
+
+
+
+
       <% end %>
       <% if (["mp3", "alac", "aac", "flac", "wav"] - @formats).include?("alac") %>
         <%= f.label :alac, "ALAC Archive" %><br>

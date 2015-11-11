@@ -31,6 +31,7 @@ gem 'aws-sdk', '<2.0'
 
 gem "paperclip"
 gem 'posix-spawn' #attempt to fix out of memory uploads.
+gem 's3_direct_upload'
 
 gem "recaptcha", :require => "recaptcha/rails"
 
