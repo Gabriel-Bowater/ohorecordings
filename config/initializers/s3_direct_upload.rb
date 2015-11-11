@@ -1,7 +1,6 @@
 S3DirectUpload.config do |c|
 	c.bucket = 'ohorecordings'
 	c.region = 's3-ap-southeast-2'
-	c.url = "https://ohorecordings.s3.amazonaws.com/"
 
 	if(Rails.env == 'development')
 	  c.access_key_id = Rails.application.secrets.aws_access_key_id
