@@ -18,6 +18,12 @@ Rails.application.routes.draw do
 
   get '/application/about' => 'application#about'
 
+
+  #track and album upload routes
+  get '/tracks/upload/:id', to: 'tracks#upload'
+  
+  get '/albums/upload/:id', to: 'albums#upload'
+
   #password reset process
   get '/recover', to: 'users#recover'
 

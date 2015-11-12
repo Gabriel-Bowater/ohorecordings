@@ -1,0 +1,33 @@
+<div>
+	<h1><%= @track.name %></h1>
+
+  <h2>Current file formats:</h2>
+  <% @formats.each do |format| %>
+    <p><%= format %> 
+      <form method="post" action="/tracks/<%= @track.id %>">
+        <input type="submit" value="Delete Archive">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+        <input type="hidden" name="_method" value="patch">
+        <input type="hidden" name="delete" value="<%= format %>">
+      </form>
+    </p>
+  <% end %>
+
+
+  <h2>Add formats:</h2>
+
+  <form action="/tracks/upload/<%= @track.id %>">
+  	<select name="format">
+  		<option value="mp3">mp3</option>
+  		<option value="alac">alac</option>
+  		<option value="flac">flac</option>
+  		<option value="wav">wav</option>
+  		<option value="sample">sample(mp3)</option>
+  	</select>
+  	<input type="hidden" name="track_id" value="<%= @track.id %>">
+  	<input type="submit" value="continue">
+  </form>
+
+<h4><a href="/albums/<%= @track.album_id %>"><u>Click here</u></a> to return to track Album page.</h4>
+
+</div>

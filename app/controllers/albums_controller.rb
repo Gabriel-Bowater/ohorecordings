@@ -36,13 +36,12 @@ class AlbumsController < ApplicationController
 	def create
 		new_album = Album.new( album_params )
 		if new_album.save!
-			flash.notice = "New Album Created."
+			flash.notice = "New Album Created. Add .zip or .rar archives to the album from the album page."
 		else
 			flash.alert = "Album failed to save. Name is the only essential, non-duplicatable field. Is there already an album by that name? check <a href='/albums/index'>here</a>"
 		end
 		
 		redirect_to new_album_path
-
 	end
 
 	def update
@@ -68,11 +67,17 @@ class AlbumsController < ApplicationController
 				album.wav = nil
 				album.save
 			end			
+			redirect_to "/albums/#{params[:id]}"	
 		else 
 			album.update( album_params )
 			album.save
+			render nothing: true
 		end
-		redirect_to "/albums/#{params[:id]}"
+	end
+
+	def upload
+		@album = Album.find(params[:album_id])
+		@format = params[:format]
 	end
 
 	private 

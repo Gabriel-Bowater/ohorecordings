@@ -1,0 +1,103 @@
+<h3><%= @track.name %></h3>
+<h4><%= @format %></h4>
+
+<% if @format == "mp3" %>
+  <%= s3_uploader_form  callback_url: "/tracks/#{@track.id}/", 
+                        callback_method: "PATCH",
+                        callback_param: "track[mp3]",
+                        key: "${filename}",
+                     		key_starts_with: "",                        
+                        expiration: 24.hours.from_now,
+                        id: "s3-uploader",
+                        max_file_size: 2000.megabytes do %>
+    <%= label_tag :mp3_track_for_s3 %></br>
+    <%= file_field_tag :file, multiple: true %>
+    <input type="hidden" name="Content-type" id="Content-type" value="audio/mpeg">
+  <% end %>
+<% end %>
+
+<% if @format == "alac" %>
+  <%= s3_uploader_form  callback_url: "/tracks/#{@track.id}/", 
+                        callback_method: "PATCH",
+                        callback_param: "track[alac]", 
+                        key: "${filename}",
+                     		key_starts_with: "",                        
+                        expiration: 24.hours.from_now,
+                        id: "s3-uploader",
+                        max_file_size: 2000.megabytes do %>
+    <%= label_tag :alac_track_for_s3 %></br>
+    <%= file_field_tag :file, multiple: true %>
+    <input type="hidden" name="Content-type" id="Content-type" value="">
+  <% end %>
+<% end %>
+
+<% if @format == "aac" %>
+  <%= s3_uploader_form  callback_url: "/tracks/#{@track.id}/", 
+                        callback_method: "PATCH",
+                        callback_param: "track[aac]", 
+                        key: "${filename}",
+                     		key_starts_with: "",                        
+                        expiration: 24.hours.from_now,
+                        id: "s3-uploader",
+                        max_file_size: 2000.megabytes do %>
+    <%= label_tag :aac_track_for_s3 %></br>
+    <%= file_field_tag :file, multiple: true %>
+    <input type="hidden" name="Content-type" id="Content-type" value="">
+  <% end %>
+<% end %>
+
+<% if @format == "flac"%>
+  <%= s3_uploader_form  callback_url: "/tracks/#{@track.id}/", 
+                        callback_method: "PATCH",
+                        callback_param: "track[flac]", 
+                        key: "${filename}",
+                     		key_starts_with: "",                        
+                        expiration: 24.hours.from_now,
+                        id: "s3-uploader",
+                        max_file_size: 2000.megabytes do %>
+    <%= label_tag :flac_track_for_s3 %></br>
+    <%= file_field_tag :file, multiple: true %>
+    <input type="hidden" name="Content-type" id="Content-type" value="">
+  <% end %>
+<% end %>
+
+<% if @format == "wav" %>
+  <%= s3_uploader_form  callback_url: "/tracks/#{@track.id}/", 
+                        callback_method: "PATCH",
+                        callback_param: "track[wav]",
+                        key: "${filename}",
+                     		key_starts_with: "",                        
+                        expiration: 24.hours.from_now,
+                        id: "s3-uploader",
+                        max_file_size: 2000.megabytes do %>
+    <%= label_tag :wav_track_for_s3 %></br>
+    <%= file_field_tag :file, multiple: true %>
+    <input type="hidden" name="Content-type" id="Content-type" value="">
+  <% end %>
+<% end %>
+
+<% if @format == "sample" %>
+  <%= s3_uploader_form  callback_url: "/tracks/#{@track.id}/", 
+                        callback_method: "PATCH",
+                        callback_param: "track[sample]", 
+                        key: "${filename}",
+                     		key_starts_with: "",                        
+                        expiration: 24.hours.from_now,              
+                        id: "s3-uploader",
+                        max_file_size: 2000.megabytes do %>
+    <%= label_tag :sample_track_for_s3 %></br>
+    <%= file_field_tag :file, multiple: true %>
+    <input type="hidden" name="Content-type" id="Content-type" value="">
+  <% end %>
+<% end %>
+
+<div id="uploads_container"></div>
+<script id="template-upload" type="text/x-tmpl">
+  <div id="upload_flac" class="upload">
+    <h5><%= @format.upcase %> Upload</h5>
+    <div class="progress progress-striped active"><div class="bar" style="width: 0%"></div></div>
+  </div>
+</script>
+
+
+<h4>Once upload is complete, <a href="/tracks/<%= @track.id %>"><u>click here</u></a> to return to Track page.</h4>

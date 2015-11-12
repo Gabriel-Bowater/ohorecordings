@@ -6,3 +6,4 @@ Paperclip::Attachment.default_options.merge!(
   s3_permissions:       :private,
   s3_protocol:          'https'
 )
+

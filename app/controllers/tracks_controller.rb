@@ -13,26 +13,77 @@ class TracksController < ApplicationController
 		end
 	end
 
+	def update
+		track = Track.find(params[:id])
+		if params[:delete]
+			if params[:delete] == "mp3"
+				track.mp3 = nil
+				track.save
+			end
+			if params[:delete] == "alac"
+				track.alac = nil
+				track.save
+			end		
+			if params[:delete] == "aac"
+				track.aac = nil
+				track.save
+			end				
+			if params[:delete] == "flac"
+				track.flac = nil
+				track.save
+			end			
+			if params[:delete] == "wav"
+				track.wav = nil
+				track.save
+			end
+			redirect_to "/tracks/#{params[:id]}"
+		else 
+			track.update( track_params )
+			track.save
+			render nothing: true
+		end
+	end
+	
+	def upload
+		@track = Track.find(params[:track_id])
+		@format = params[:format]
+	end
+
 	def destroy
 		@track = Track.find(params[:id])
 		@track.destroy
 		flash.notice = "Track #{@track.name} deleted. "
 		redirect_to tracks_path
-
 	end
 
 	def create
 		if params[:track][:track_number] = ""
 			params[:track][:track_number] = Track.where(album_id: params[:track][:album_id]).length + 1
 		end
-		new_album = Track.new( track_params )
-		if new_album.save!
-			flash.notice = "New Track Created."
+		new_track = Track.new( track_params )
+		if new_track.save!
+			flash.notice = "New Track Created. Click the  file icon next to the track to upload audio formats."
 		else
-			flash.alert = "Album failed to save. Name is the only essential, non-duplicatable field. Is there already an album by that name? check <a href='/albums/index'>here</a>"
+			flash.alert = "Track failed to save. Name is the only essential, non-duplicatable field. Is there already an track by that name? check <a href='/tracks/index'>here</a>"
 		end
 		
 		redirect_to album_path(params[:track][:album_id])
+	end
+
+	def show
+		if !(@user && @admins.include?(@user.email))
+			redirect_to '/'
+		elsif !@user
+			redirect_to '/'
+		end
+		@track = Track.find(params[:id])
+		@formats = Array.new
+  	@formats << "mp3" if @track.mp3_file_name
+  	@formats << "ogg" if @track.ogg_file_name
+  	@formats << "alac" if @track.alac_file_name
+  	@formats << "aac" if @track.aac_file_name
+  	@formats << "flac" if @track.flac_file_name
+  	@formats << "wav" if @track.wav_file_name
 	end
 
 	private 
