@@ -1,4 +1,4 @@
-<h3 class="catalog-head">Our Catalog</h3>
+<h3 class="catalog-head">Our Catalogue</h3>
 <%Album.all.order(:created_at).each do |album|%>
   <a class="album-link" href="/albums/<%=album.id%>">
       <img src=<%=album.art_url%> class="album-art">

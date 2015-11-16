@@ -22,13 +22,17 @@ class AlbumsController < ApplicationController
 		@album = Album.find(params[:id])
 		@tracks = Track.where(album_id: @album.id)
 		@album_rights = AlbumRight.where(album_id: @album.id)
+		@album_orders = AlbumOrder.where(album_id: @album.id)
 		@album.destroy
 		@tracks.each do |track|
 			track.destroy
 		end
-		@album_rights.each do |a_r|
-			a_r.destroy
+		@album_rights.each do |album_right|
+			album_right.destroy
 		end
+		@album_orders.each do |album_order|
+			album_order.destroy
+		end		
 		flash.notice = "Album #{@album.name} deleted. All tracks and album rights associated with this album have also been deleted."
 		redirect_to "/"
 	end

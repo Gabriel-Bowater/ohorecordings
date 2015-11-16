@@ -52,6 +52,14 @@ class TracksController < ApplicationController
 	def destroy
 		@track = Track.find(params[:id])
 		@track.destroy
+		@track_rights = TrackRight.where(track_id: @track.id)
+		@track_orders = TrackOrder.where(track_id: @track.id)
+		@track_rights.each do |track_right|
+			t_r.destroy
+		end
+		@track_orders.each do |track_order|
+			track_order.destroy
+		end		
 		flash.notice = "Track #{@track.name} deleted. "
 		redirect_to tracks_path
 	end

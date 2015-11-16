@@ -390,6 +390,15 @@ SINGLE ALBUM PAGE
   height:32px;
 }
 
+.album-desc {
+  background-color: rgba(20,121,178,0.85);
+  color: black;
+  font-family:'Open Sans', sans-serif;
+  font-size: 1.2em;
+  border: 0px;
+
+}
+
 /*******************************
 LOGIN SIGNUP PAGE
 *******************************/
@@ -559,3 +568,12 @@ USERS INDEX
   margin-left: 5%;
   
 }
+
+  /***************************
+  ABOUT PAGE
+  ****************************/
+
+  #about-photo{
+    max-width: 27%;
+    border-radius: 6px;
+  }
