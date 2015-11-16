@@ -390,12 +390,14 @@ SINGLE ALBUM PAGE
   height:32px;
 }
 
-.album-desc {
+.album-desc-pre {
   background-color: rgba(20,121,178,0.85);
   color: black;
   font-family:'Open Sans', sans-serif;
   font-size: 1.2em;
   border: 0px;
+  white-space: pre-wrap;
+  word-break: keep-all;
 
 }
 

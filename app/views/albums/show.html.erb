@@ -18,8 +18,10 @@
   <%end%>
   <div class="spacer"></div>
   <p class="album-price"><%=number_to_currency(@album.price)%></p>
-  <pre class="album-desc" style="padding:15px"><%=@album.description%></pre>
-  <p class="album-desc">By <%=@album.artists%></p>
+  <pre class="album-desc-pre" style="padding:15px"><%=@album.description%></pre>
+  <% if @album.artists %>
+    <p class="album-desc">By <%=@album.artists%></p>
+  <% end %>
   <p class="album-desc">Released <%=@album.year%></p>
   <p class="album-desc">Available Formats: 
     <% @formats.length.times do |i| %>
