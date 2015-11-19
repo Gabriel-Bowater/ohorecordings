@@ -398,6 +398,10 @@ SINGLE ALBUM PAGE
   border: 0px;
   white-space: pre-wrap;
   word-break: keep-all;
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+  display: flex;   
+  flex-wrap: wrap;
 
 }
 
