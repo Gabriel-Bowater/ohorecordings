@@ -2,7 +2,6 @@
 <div id="album-show-main">
 <div>
   <a href=<%= @album.art_url %>  id="album-art"><img src=<%=@album.art_url%> class="album-page-art" alt=<%= @album.name %>></a>
-  <h1 class="album-name"><%=@album.name%></h1>
   <% if @user && @album.in_cart(@user.id) %>
     <a href=<%=orders_path%>><img src="/images/incart.png" class="big-cart" alt=<%= @album.name %>></a>
   <% elsif @user && @album.in_library(@user.id) %>    
@@ -16,8 +15,8 @@
       </div>
     </form>
   <%end%>
-  <div class="spacer"></div>
   <p class="album-price"><%=number_to_currency(@album.price)%></p>
+  <div class="spacer"></div>
   <pre class="album-desc-pre" style="padding:15px"><%=@album.description%></pre>
   <% if @album.artists %>
     <p class="album-desc">By <%=@album.artists%></p>

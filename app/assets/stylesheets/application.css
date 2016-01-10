@@ -20,8 +20,9 @@ GENERAL
 body {
   font-family:'Open Sans', sans-serif;
   /*background:  black;#FF111A*/
-  background-image: url("/images/recordstack.png");
-  background-repeat: repeat-y;
+  /*background-image: url("/images/recordstack.png");*/
+  /*background-repeat: repeat-y;*/
+  background-color:  #CCCCAA;
   background-size: 100%;
 }
 
@@ -47,7 +48,7 @@ a:hover {
 }
 
 #wrapper {
-  max-width:940px;
+  max-width: 95%;
   margin: 0 auto;
   padding: 0 5%;
 
@@ -55,12 +56,14 @@ a:hover {
 
 #background_div {
   /*background: #9E9E84;*/
-  /*background: rgba(204,204,170,0.85);*/
-  background: rgba(204,204,170,0.85);
+  background:  #CCCCAA;
+  /*rgba(204,204,170,0.85);*/
+
+  /*background: black;*/
   /*background-image: url("/images/recordstack.png");*/
   background-repeat: repeat-y;
   background-size: 100%;
-  border: double 3px black;
+  /*border: double 3px black;*/
   /*border-right: double 3px black;*/
 }
 
@@ -86,6 +89,18 @@ h3 {
 footer {
   text-align: center;
   padding-top: 30px;
+  float: bottom;
+  background:  black;
+  /*background-image: url("/images/recordstack.png");*/
+  /*background-repeat: repeat-y;*/
+  /*background-color:  #CCCCAA;*/
+  /*background-size: 100%;*/
+  border-top: double #CCCCAA 5px;
+  color: #CCCCAA;
+}
+
+footer a {
+  color: #CCCCAA;
 }
 /***************************
 HEADING
@@ -168,6 +183,8 @@ nav li {
 nav a {
   font-weight: 700;
   padding:5px 10px;
+  text-shadow: black 0.1em 0.1em 0.2em;
+  font-size: 1.1em;
 
 }
 
@@ -259,9 +276,7 @@ a {
 
   header {
     border-bottom:5px solid black;
-    /*#57A8E0 #105B63*/
     margin-bottom: 60px;
-    /*#FF111A*/
   }
   p {
 
@@ -274,9 +289,8 @@ FRONT PAGE
 *******************************/
 .album-art {
   /*width: 120px;*/
-  display: inline-block;
-  float: left;
-  max-height: 100%
+  width: 95%;
+  margin-left: 2.5%;
 }
 
 .catalog-head {
@@ -284,25 +298,28 @@ FRONT PAGE
 }
 
 .album-link {
-  display: block;
-  height: 120px;
+  display: inline-block;
+  height: 240px;
   background: rgba(255,255,255,1);
   border-radius:4px;
-  margin: 5px;
+  margin: 2.25%;
+  margin-bottom: 3%;
   padding: 5px;
-  max-width: 70%;
-  margin-left: 15%;
+  width: 20%;
+  /*margin-left: 15%;*/
   border: double 5px #092B42;
-  box-shadow: 10px 10px 5px #888888;
-}
-
-.album-price {
-  float: right;
-  font-size: 1.2em
+  box-shadow: 2px 2px 5px white;
+  overflow: auto;
 }
 
 .album-name {
   vertical-align: middle
+}
+
+.album-name-div {
+  height: 35px;
+  width: 100%;
+  display: block;
 }
 
 /*******************************
@@ -310,7 +327,7 @@ SINGLE ALBUM PAGE
 *******************************/
 
 #album-show-main {
-  background: rgba(20,121,178,0.85);
+  background: white;
   border: double 5px #092B42;
   margin-left: 3%;
   margin-right: 3%;
@@ -337,6 +354,13 @@ SINGLE ALBUM PAGE
   margin-right: 2%
 }
 
+.album-price {
+  float: right;
+  font-size: 1.4em;
+  margin-top: 100px;
+  margin-right: -8%;
+
+}
 
 .small-cart {
   float: right;
@@ -358,13 +382,8 @@ SINGLE ALBUM PAGE
 }
 
 .album-trashcan {
-  width: 3%;
-  float: right;
-  /*position: absolute;*/
-  display: inline;
-  margin: -20px 1% 0 0;
+  width: 18px;
   padding: 2px;
-  /*margin-right: .5%*/
 }
 
 .track-order-button {
@@ -391,7 +410,7 @@ SINGLE ALBUM PAGE
 }
 
 .album-desc-pre {
-  background-color: rgba(20,121,178,0.85);
+  background-color: #CCCCAA;
   color: black;
   font-family:'Open Sans', sans-serif;
   font-size: 1.2em;
@@ -458,7 +477,7 @@ USER LIBRARY PAGE
 }
 
 .library-div {
-  background: rgba(204,204,170,0.85);
+  background: white;
   border: double 5px #092B42;
   border-radius: 5px;
   margin-left: 10%;
@@ -579,7 +598,27 @@ USERS INDEX
   ABOUT PAGE
   ****************************/
 
-  #about-photo{
-    max-width: 27%;
-    border-radius: 6px;
-  }
+.about-head {
+  margin-bottom: 30px;
+}
+
+#about-photo{
+  max-width: 22%;
+  border-radius: 6px;
+  margin: 3% 3% 0 0;
+}
+
+#contacts-left{
+  display: inline-block;
+  width: 30%;
+}
+
+#contacts-right{
+  display: inline-block;
+  width: 30%;
+}
+
+.contacts-head{
+  text-align: left;
+  margin-left: 46%
+}

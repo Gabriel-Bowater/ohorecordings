@@ -1,16 +1,14 @@
-<h3 class="catalog-head">Our Catalogue</h3>
+<h3 class="catalog-head">OHO Catalogue</h3>
 <%Album.all.order(:created_at).each do |album|%>
-  <a class="album-link" href="/albums/<%=album.id%>">
+  <div class="album-link">
+   <a  href="/albums/<%=album.id%>">
       <img src=<%=album.art_url%> class="album-art">
-    <div >
-      <p class="album-name"><%=album.name%></p>
-      <p class="album-name"><%=album.year%></p>
-      <p class="album-price"><%=number_to_currency(album.price)%></p>
-    </div>
-  </a>
-  <% if @user && @admins.include?(@user.email)  %>
-  <%= link_to image_tag("/images/trashcan.png", :border=>0, :class => 'album-trashcan'),  "/albums/#{album.id}",  method: :delete, data: { confirm: "Really delete album #{album.name} from database? There are #{album.album_rights.length} user album rights associated with this album" } %>
-  <% end %>
+
+      <% if @user && @admins.include?(@user.email)  %>
+        <%= link_to image_tag("/images/trashcan.png", :border=>0, :class => 'album-trashcan'),  "/albums/#{album.id}",  method: :delete, data: { confirm: "Really delete album #{album.name} from database? There are #{album.album_rights.length} user album rights associated with this album" } %>
+      <% end %>
+    </a>
+  </div>
 
 <%end%>
 <p style="margin-left:20px;font-size:12.5px">All prices in New Zealand dollars.</p>
