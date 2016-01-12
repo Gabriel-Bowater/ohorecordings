@@ -7,7 +7,6 @@
                         callback_param: "album[mp3]",
                         key: "${filename}",
                      		key_starts_with: "",                        
-                        expiration: 24.hours.from_now,
                         id: "s3-uploader",
                         max_file_size: 2000.megabytes do %>
     <%= label_tag :mp3_archive_for_s3 %></br>
@@ -22,7 +21,6 @@
                         callback_param: "album[alac]", 
                         key: "${filename}",
                      		key_starts_with: "",                        
-                        expiration: 24.hours.from_now,
                         id: "s3-uploader",
                         max_file_size: 2000.megabytes do %>
     <%= label_tag :alac_archive_for_s3 %></br>
@@ -37,7 +35,6 @@
                         callback_param: "album[aac]", 
                         key: "${filename}",
                      		key_starts_with: "",                        
-                        expiration: 24.hours.from_now,
                         id: "s3-uploader",
                         max_file_size: 2000.megabytes do %>
     <%= label_tag :aac_archive_for_s3 %></br>
@@ -52,7 +49,6 @@
                         callback_param: "album[flac]", 
                         key: "${filename}",
                      		key_starts_with: "",                        
-                        expiration: 24.hours.from_now,
                         id: "s3-uploader",
                         max_file_size: 2000.megabytes do %>
     <%= label_tag :flac_archive_for_s3 %></br>
@@ -67,7 +63,6 @@
                         callback_param: "album[wav]",
                         key: "${filename}",
                      		key_starts_with: "",                        
-                        expiration: 24.hours.from_now,
                         id: "s3-uploader",
                         max_file_size: 2000.megabytes do %>
     <%= label_tag :wav_archive_for_s3 %></br>
@@ -82,7 +77,6 @@
                         callback_param: "album[sample]", 
                         key: "${filename}",
                      		key_starts_with: "",                        
-                        expiration: 24.hours.from_now,              
                         id: "s3-uploader",
                         max_file_size: 2000.megabytes do %>
     <%= label_tag :sample_archive_for_s3 %></br>

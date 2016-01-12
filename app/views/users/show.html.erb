@@ -1,12 +1,13 @@
 <div class="library-div">
-<h3>Your library</h3>
+<h1>Your library</h1>
 <p>User = <%= @user.email %></p>
 
 <h2><u>Your Albums</u></h2>
 <%  if @user_albums.length > 0 %>
 	<% @user_albums.each do |album| %>
-		<h3 style="text-align:left"><%=album.name%></h3>
-		<p class="generate-album-link"><a href="" class="submit-btn" >Generate Download Link</a></p>
+		<img src="<%= album.art_url %>" class="album-art-library">
+		<h3 style="text-align:left;display:inline-block"><%=album.name%></h3>
+		<p class="generate-album-link"><a href="" class="submit-btn gen-link-btn" >Generate Download Link</a></p>
 		<div class="album-link-box">
 			<h2>Available download formats</h2>
 			<% if album.mp3_file_name %>

@@ -99,7 +99,7 @@ footer {
   color: #CCCCAA;
 }
 
-footer a {
+footer a, footer a:hover, footer a:active, footer a:visited, footer a:focus {
   color: #CCCCAA;
 }
 /***************************
@@ -147,6 +147,7 @@ h1 {
   font-size:2.5em;
   font-weight:normal;
   line-height:0.8em;
+  text-align: center
 }
 
 /*h2 {
@@ -357,7 +358,7 @@ SINGLE ALBUM PAGE
 .album-price {
   float: right;
   font-size: 1.4em;
-  margin-top: 100px;
+  margin-top: 120px;
   margin-right: -8%;
 
 }
@@ -415,6 +416,7 @@ SINGLE ALBUM PAGE
   font-family:'Open Sans', sans-serif;
   font-size: 1.2em;
   border: 0px;
+  min-height: 300px;
   white-space: pre-wrap;
   word-break: keep-all;
   display: -webkit-flex; /* Safari */
@@ -483,7 +485,8 @@ USER LIBRARY PAGE
   margin-left: 10%;
   width: 80%;
   box-shadow: 10px 10px 5px #888888;
-  padding-bottom: 40px
+  padding-bottom: 40px;
+  padding-left: 1.8%;
 }
 
 .album-link-box{
@@ -518,6 +521,10 @@ USER LIBRARY PAGE
 
 }
 
+.gen-link-btn {
+  padding-right: 4px;
+}
+
 .generate-form {
   text-align: center; 
   width: 20%; 
@@ -541,6 +548,14 @@ USER LIBRARY PAGE
   padding: 5px;
   margin-top: 5px;
   font-size: 1.3em;
+}
+
+.album-art-library {
+  width: 15%;
+  box-shadow: 4px 4px 3px #666;
+  display: inline-block;
+  margin-bottom: 15px;
+  margin-left: 5%;
 }
 
 /********************************
