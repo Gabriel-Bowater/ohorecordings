@@ -24,7 +24,11 @@
   <p class="album-desc">Released <%=@album.year%></p>
   <p class="album-desc">Available Formats: 
     <% @formats.length.times do |i| %>
-      <%= "#{@formats[i]} " %>
+      <% if @formats[i] == "wav"  %>
+        <%= "wav 24bit/88.2kHz" %>
+      <% else %>
+        <%= "#{@formats[i]} " %>
+      <% end %>
     <% end %>
 </div>
   <div>
