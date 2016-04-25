@@ -55,9 +55,9 @@
         <%end%>
 
         <%if track.sample_file_name%>
-          <a href=<%= track.sample.s3_object.url_for(:read, :secure => true, :expires => 20.minutes.from_now) %> target="_blank"> <img src="/images/dummyplay.png" class='play-button'></a> 
-          <audio controls>
-            <source src=<%= track.sample.s3_object.url_for(:read, :secure => true, :expires => 20.minutes.from_now) %> type="audio/mpeg" >
+<!--           <a href=<%= track.sample.s3_object.url_for(:read, :secure => true, :expires => 20.minutes.from_now) %> target="_blank"> <img src="/images/dummyplay.png" class='play-button'></a>  -->
+          <audio controls class='play-button-html5'>
+            <source src=<%= track.sample.s3_object.url_for(:read, :secure => true, :expires => 20.minutes.from_now) %> type="audio/mpeg" class='play-button'>
           Your browser does not support the audio element.
           </audio>
 

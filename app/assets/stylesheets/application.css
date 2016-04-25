@@ -349,6 +349,15 @@ SINGLE ALBUM PAGE
   padding: 2px;
 }
 
+.play-button-html5 {
+  float: right;
+  width: 50px;
+  /*position: absolute;*/
+  display: inline-block;
+  margin: 3px;
+  padding: 2px;
+}
+
 .big-cart {
   float: right;
   width: 10%;
