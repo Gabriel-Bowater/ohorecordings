@@ -1,0 +1,28 @@
+<div class="col-md-6 portfolio-item log-in-form">
+	<%if @user && @admins.include?(@user.email)%>
+	  <h3>Editing album <%= @album.name %></h3>
+	  <p>Enter details to enter an album in the database</p>
+	  <%= form_for @album, url: {action: "update"}, html: {class: "new-item-form", multipart: true} do |f|%>
+	  	<%= f.label :name, "Album name" %><br>
+	  	<%= f.text_field :name %><br>
+	  	<%= f.label :art_url, "Album art URL" %><br>
+	  	<%= f.text_field :art_url %><br>
+	  	<%= f.label :artists, "Artists" %><br>
+	  	<%= f.text_field :artists %><br>
+	  	<%= f.label :year, "Year" %><br>
+	  	<%= f.text_field :year %><br>
+  		<%= f.label :isrc, "ISRC" %><br>
+	  	<%= f.text_field :isrc %><br>	  	
+	  	<%= f.label :description, "Description" %><br>
+	  	<%= f.text_area :description %><br>	
+	  	<%= f.label :price, "Price" %><br>
+	  	<%= f.number_field :price, step: "0.01", required: true%><br>	    	   		 	
+	  	<%= f.submit class: "btn-md btn-warning submit-btn" %>
+
+	  <% end %>
+	<%else%>
+		<p>Beep Boop. Access Denied</p>
+	<%end%>
+
+
+</div>

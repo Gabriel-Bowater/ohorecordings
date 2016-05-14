@@ -75,8 +75,12 @@ class AlbumsController < ApplicationController
 		else 
 			album.update( album_params )
 			album.save
-			render nothing: true
+			redirect_to "/albums/#{params[:id]}"	
 		end
+	end
+
+	def edit
+		@album = Album.find(params[:id].to_i)
 	end
 
 	def upload

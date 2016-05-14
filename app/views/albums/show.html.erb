@@ -76,6 +76,7 @@
 </div>
 
 <% if @user && @admins.include?(@user.email) %>
+  <h3><a href="/albums/<%= @album.id %>/edit">Edit</a></h3>
   <div id="album-edit">
     <h2>Current file formats:</h2>
     <% @formats.each do |format| %>

@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   get '/application/about' => 'application#about'
 
-
+  get 'albums/:id/edit' => 'albums#edits'
   #track and album upload routes
   get '/tracks/upload/:id', to: 'tracks#upload'
   
