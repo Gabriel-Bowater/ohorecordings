@@ -102,6 +102,10 @@ footer {
 footer a, footer a:hover, footer a:active, footer a:visited, footer a:focus {
   color: #CCCCAA;
 }
+
+.not-skia{
+  font-family: 'El Messiri', sans-serif;
+}
 /***************************
 HEADING
 ****************************/
@@ -263,7 +267,7 @@ a {
     max-width: 30%;
     /*margin: -5px 13.5% 0 35%;*/
     max-height: 100%;
-    font-size: 1.6em;
+    font-size: 1.7em;
     margin-left: 31.2%
   }
 
@@ -292,15 +296,17 @@ FRONT PAGE
   /*width: 120px;*/
   width: 95%;
   margin-left: 2.5%;
+  max-height: 290px;
 }
 
 .catalog-head {
   color: black;
 }
 
-.album-link {
+.album-link-div {
+  clear: both;
   display: inline-block;
-  height: 240px;
+  height: auto;
   background: rgba(255,255,255,1);
   border-radius:4px;
   margin: 2.25%;
@@ -311,6 +317,8 @@ FRONT PAGE
   border: double 5px #092B42;
   box-shadow: 2px 2px 5px white;
   overflow: auto;
+  max-height: 300px;
+  overflow: initial;
 }
 
 .album-name {

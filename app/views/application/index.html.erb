@@ -1,6 +1,6 @@
-<h3 class="catalog-head">OHO Catalogue</h3>
+<h3 class="catalog-head not-skia">OHO Catalogue</h3>
 <%Album.all.order(:created_at).each do |album|%>
-  <div class="album-link">
+  <div class="album-link-div">
    <a  href="/albums/<%=album.id%>">
       <img src=<%=album.art_url%> class="album-art">
 
