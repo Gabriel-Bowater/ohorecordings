@@ -1,5 +1,5 @@
 <!--<h3 class="catalog-head not-skia">OHO Catalogue</h3> -->
-<div id="front_page_buffer"></div>
+
 <%Album.all.order(:created_at).each do |album|%>
   <div class="album-link-div">
    <a  href="/albums/<%=album.id%>">

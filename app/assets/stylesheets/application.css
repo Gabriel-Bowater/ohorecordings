@@ -336,7 +336,8 @@ FRONT PAGE
 	width:100%;
 	background-color:#CCCCAA;
 	display:block;
-	height: 325px;
+	height: 15px;
+	border: black solid 2px;
 }
 
 /*******************************
