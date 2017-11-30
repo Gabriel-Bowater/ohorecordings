@@ -13,7 +13,8 @@ function noSample(){
 $(document).ready(function() {
 
 	if (window.location.pathname == "/"){
-		$("#background_div").css("background-color", "#261c00")
+		//$("#background_div").css("background-color", "#261c00")
+		$("#background_div").css("background-color", "black")
 	}
 
 

@@ -332,6 +332,13 @@ FRONT PAGE
   display: block;
 }
 
+#front_page_buffer{
+	width:100%;
+	background-color:#CCCCAA;
+	display:block;
+	height: 325px;
+}
+
 /*******************************
 SINGLE ALBUM PAGE
 *******************************/
