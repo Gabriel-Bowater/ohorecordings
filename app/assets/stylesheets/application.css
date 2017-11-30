@@ -59,12 +59,13 @@ a:hover {
   background:  #CCCCAA;
   /*rgba(204,204,170,0.85);*/
 
-  /*background: black;*/
-  /*background-image: url("/images/recordstack.png");*/
+ /*background: black;*/
+ /*background-image: url("/images/recordstack.png");*/
   background-repeat: repeat-y;
   background-size: 100%;
   /*border: double 3px black;*/
   /*border-right: double 3px black;*/
+  border-top: #CCCCAA solid 12px;
 }
 
 /*img {
@@ -280,7 +281,7 @@ a {
   }
 
   header {
-    border-bottom:5px solid black;
+    border-bottom:8px solid black;
     margin-bottom: 60px;
   }
   p {

@@ -6,4 +6,15 @@
 
 function noSample(){
   alert("No sample available, sorry.");
+
 }
+
+
+$(document).ready(function() {
+
+	if (window.location.pathname == "/"){
+		$("#background_div").css("background-color", "#261c00")
+	}
+
+
+}); //End of on ready function
