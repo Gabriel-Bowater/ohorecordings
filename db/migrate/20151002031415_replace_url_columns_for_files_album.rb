@@ -11,7 +11,6 @@ class ReplaceUrlColumnsForFilesAlbum < ActiveRecord::Migration
   	remove_column :albums, :ogg_arch_url
   	remove_column :albums, :flac_arch_url
 
-
   end
 
   def down
