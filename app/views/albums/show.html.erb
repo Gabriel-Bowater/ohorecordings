@@ -27,7 +27,7 @@
   <p class="album-desc">Released <%=@album.year%></p>
   <p class="album-desc">Available Formats: 
     <% @formats.length.times do |i| %>
-      <% if @formats[i] == "wav"  %>
+      <% if @formats[i] == "wav" && @album.name.downcase.include?("hi-res") %>
         <%= "hi-res wav" %>
       <% else %>
         <%= "#{@formats[i]} " %>
@@ -43,47 +43,47 @@
     <% end %>
 
 </div>
-  <div>
-    <h2>Track Listing:</h2>
-    <% @tracks.each do |track| %>
-      <section class="single-track">
-      <p class="track-listing">
-        <%if track.name.length < 30 %>
-          <%=track.track_number%>: <%=track.name%> <%="."*(30-track.name.length)%> 
-        <% else %>
-          <%=track.track_number%>: <%=track.name%>
-        <% end %>
-        <p class="track-listing-price" style="float:right"><%= number_to_currency(track.price)  %></p>
-        <% if @user && track.in_cart(@user.id) %>
-          <img src="/images/incart.png" class="small-cart">
-        <% elsif @user && track.in_library(@user.id) %>    
-          <a href=<%=user_path%>><img src="/images/inlibrary.png" class="small-cart"></a>
-        <%else%>
-          <form  class='track-order-button' name='orderTrack' method='post' action='/orders'>
-            <input type='hidden' name='track_id' value=<%=track.id%>>
-            <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-            <input type="image" name="track" src="/images/cart.png" border="0" alt="Submit" class="small-cart"/>
-          </form>
-        <%end%>
+<div>
+  <h2>Track Listing:</h2>
+  <% @tracks.each do |track| %>
+    <section class="single-track">
+    <p class="track-listing">
+      <%if track.name.length < 30 %>
+        <%=track.track_number%>: <%=track.name%> <%="."*(30-track.name.length)%> 
+      <% else %>
+        <%=track.track_number%>: <%=track.name%>
+      <% end %>
+      <p class="track-listing-price" style="float:right"><%= number_to_currency(track.price)  %></p>
+      <% if @user && track.in_cart(@user.id) %>
+        <img src="/images/incart.png" class="small-cart">
+      <% elsif @user && track.in_library(@user.id) %>    
+        <a href=<%=user_path%>><img src="/images/inlibrary.png" class="small-cart"></a>
+      <%else%>
+        <form  class='track-order-button' name='orderTrack' method='post' action='/orders'>
+          <input type='hidden' name='track_id' value=<%=track.id%>>
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+          <input type="image" name="track" src="/images/cart.png" border="0" alt="Submit" class="small-cart"/>
+        </form>
+      <%end%>
 
-        <%if track.sample_file_name%>
+      <%if track.sample_file_name%>
 <!--           <a href=<%= track.sample.s3_object.url_for(:read, :secure => true, :expires => 20.minutes.from_now) %> target="_blank"> <img src="/images/dummyplay.png" class='play-button'></a>  -->
 
 
-          <a href=<%= track.sample.s3_object.url_for(:read, :secure => true, :expires => 20.minutes.from_now) %> class="js-play">
-          	<img src="/images/dummyplay.png" class="play-button">
-          </a>
+        <a href=<%= track.sample.s3_object.url_for(:read, :secure => true, :expires => 20.minutes.from_now) %> class="js-play">
+        	<img src="/images/dummyplay.png" class="play-button">
+        </a>
 
-        <%else%>
-          <input type="image" src="/images/dummyplay.png" onclick="noSample()" class='play-button'>
-        <%end%>
+      <%else%>
+        <input type="image" src="/images/dummyplay.png" onclick="noSample()" class='play-button'>
+      <%end%>
 
-        <% if @user && @admins.include?(@user.email) %>
-          <a href="/tracks/<%= track.id %>"> <img src="/images/files_icon.png" class='play-button'></a> 
-        <% end %>
-      </p>
-      </section>
-    <%end%>
+      <% if @user && @admins.include?(@user.email) %>
+        <a href="/tracks/<%= track.id %>"> <img src="/images/files_icon.png" class='play-button'></a> 
+      <% end %>
+    </p>
+    </section>
+  <%end%>
     <p>Samples served in mp3 format. All prices in New Zealand dollars.</p>
   </div>
 </div>
