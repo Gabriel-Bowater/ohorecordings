@@ -2,17 +2,19 @@ class AlbumsController < ApplicationController
   
 	# validates_attachment_content_type :mp3
 
-  def show
-    @album = Album.find(params[:id])
-    @tracks = Track.where(album_id: @album.id).order(:track_number)
-  	@formats = Array.new
-  	@formats << "mp3" if @album.mp3_file_name
-  	@formats << "ogg" if @album.ogg_file_name
-  	@formats << "alac" if @album.alac_file_name
-  	@formats << "aac" if @album.aac_file_name
-  	@formats << "flac" if @album.flac_file_name
-  	@formats << "wav" if @album.wav_file_name
-  end
+	def show
+		@album = Album.find(params[:id])
+		@tracks = Track.where(album_id: @album.id).order(:track_number)
+		@formats = Array.new
+		@formats << "mp3" if @album.mp3_file_name
+		@formats << "ogg" if @album.ogg_file_name
+		@formats << "alac" if @album.alac_file_name
+		@formats << "aac" if @album.aac_file_name
+		@formats << "flac" if @album.flac_file_name
+		@formats << "wav" if @album.wav_file_name
+		@partner = check_for_partner(@album.name)
+
+	end
 
 	def new
 		@album = Album.new
@@ -92,9 +94,31 @@ class AlbumsController < ApplicationController
 
 	def album_params
     params.require(:album).permit(:name, :art_url, :year, 
-    														:description, :artists, :isrc, 
-    														:price, :mp3, :alac, :wav,
-    														:aac, :ogg, :flac)
-  end
+    							  :description, :artists, :isrc, 
+    							  :price, :mp3, :alac, :wav,
+    							  :aac, :ogg, :flac)
+ 	end
+
+ 	def check_for_partner album_name
+ 		if album_name.downcase.include?("hi-res")
+ 			album_name_substring = album_name.split(" ")[0..-2].join(" ")
+ 			if Album.where(["name LIKE?", "%#{album_name_substring}%"]).length == 2
+ 				Album.where(["name LIKE?", "%#{album_name_substring}%"]).each do |a|
+ 					if !a.name.downcase.include?("hi-res") && a.name.downcase.include?(album_name_substring.downcase)
+ 						return a
+ 					end
+ 				end
+ 			end
+ 		else
+ 			if Album.where(["name LIKE?", "%#{album_name}%"]).length == 2
+ 				Album.where(["name LIKE?", "%#{album_name}%"]).each do |a|
+ 					if a.name.downcase.include?("hi-res")
+ 						return a
+ 					end
+ 				end
+ 			end
+ 		end
+ 		return nil
+ 	end
 	
 end

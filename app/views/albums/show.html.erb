@@ -1,5 +1,8 @@
 <br>
 <div id="album-show-main">
+
+
+
 <div>
   <a href=<%= @album.art_url %>  id="album-art"><img src=<%=@album.art_url%> class="album-page-art" alt=<%= @album.name %>></a>
   <% if @user && @album.in_cart(@user.id) %>
@@ -25,11 +28,20 @@
   <p class="album-desc">Available Formats: 
     <% @formats.length.times do |i| %>
       <% if @formats[i] == "wav"  %>
-        <%= "wav 24 bit" %>
+        <%= "hi-res wav" %>
       <% else %>
         <%= "#{@formats[i]} " %>
       <% end %>
     <% end %>
+
+    <% if @partner %>
+      <% if @partner.name.downcase.include?("hi-res") %>
+        <a href="/albums/<%= @partner.id %>"><p>Also available in Hi-Res <u>here</u></p></a>
+      <% else %>
+        <a href="/albums/<%= @partner.id %>"><p>Also available in Standard-Res <u>here</u></p></a>
+      <% end %>
+    <% end %>
+
 </div>
   <div>
     <h2>Track Listing:</h2>
