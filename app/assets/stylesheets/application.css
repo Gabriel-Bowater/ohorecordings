@@ -337,7 +337,8 @@ FRONT PAGE
 	background-color:#CCCCAA;
 	display:block;
 	height: 15px;
-	border: black solid 2px;
+	border-top: black solid 2px;
+	border-bottom: black solid 2px;
 }
 
 /*******************************
